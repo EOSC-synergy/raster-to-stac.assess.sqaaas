@@ -1,0 +1,72 @@
+config:
+  credentials: []
+  project_repos:
+    github.com/EOSC-synergy/sqaaas-tooling:
+      branch: main
+      repo: https://github.com/EOSC-synergy/sqaaas-tooling
+    gitlab.inf.unibz.it/earth_observation_public/raster-to-stac:
+      branch: main
+      repo: https://gitlab.inf.unibz.it/earth_observation_public/raster-to-stac/
+environment:
+  JPL_DOCKERFORCEBUILD: enabled
+  JPL_KEEPGOING: enabled
+sqa_criteria:
+  QC.Acc:
+    repos:
+      gitlab.inf.unibz.it/earth_observation_public/raster-to-stac git:
+        commands:
+        - /usr/bin/env sh .sqa/script.grumpy-fuchsia-bracke.sh
+        container: qc.acc_homely-flax-fly
+  QC.Doc:
+    repos:
+      gitlab.inf.unibz.it/earth_observation_public/raster-to-stac find_doc_files.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.pokey-puce-beagle.sh
+        container: qc.doc_craggy-silver-earwig
+      gitlab.inf.unibz.it/earth_observation_public/raster-to-stac git:
+        commands:
+        - /usr/bin/env sh .sqa/script.craggy-cyan-abyssinian.sh
+        container: qc.doc_smelly-seashell-coral
+      gitlab.inf.unibz.it/earth_observation_public/raster-to-stac markdownlint:
+        commands:
+        - /usr/bin/env sh .sqa/script.nerdy-scarlet-centipede.sh
+        container: qc.doc_gloppy-white-akbash
+      gitlab.inf.unibz.it/earth_observation_public/raster-to-stac restructuredtext-lint:
+        commands:
+        - /usr/bin/env sh .sqa/script.silly-ivory-beetle.sh
+        container: qc.doc_sickly-chartreuse-rat
+  QC.Lic:
+    repos:
+      gitlab.inf.unibz.it/earth_observation_public/raster-to-stac licensee:
+        commands:
+        - /usr/bin/env sh .sqa/script.stuffy-ivory-chin.sh
+        container: qc.lic_queasy-wisteria-woodpecker
+  QC.Sec:
+    repos:
+      gitlab.inf.unibz.it/earth_observation_public/raster-to-stac bandit:
+        commands:
+        - /usr/bin/env sh .sqa/script.woolly-red-vole.sh
+        container: qc.sec_zippy-olivine-schnauzer
+  QC.Sty:
+    repos:
+      gitlab.inf.unibz.it/earth_observation_public/raster-to-stac flake8:
+        commands:
+        - /usr/bin/env sh .sqa/script.cloudy-cinnabar-gibbon.sh
+        container: qc.sty_wimpy-seashell-spider
+      gitlab.inf.unibz.it/earth_observation_public/raster-to-stac jsonlint:
+        commands:
+        - /usr/bin/env sh .sqa/script.shabby-tangerine-numbat.sh
+        container: qc.sty_trippy-lemon-whippet
+  QC.Uni:
+    repos:
+      gitlab.inf.unibz.it/earth_observation_public/raster-to-stac pytest:
+        commands:
+        - /usr/bin/env sh .sqa/script.droopy-mustard-ant.sh
+        container: qc.uni_skimpy-alizarin-goose
+  QC.Ver:
+    repos:
+      gitlab.inf.unibz.it/earth_observation_public/raster-to-stac get_git_tags.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.tasty-beige-opossum.sh
+        container: qc.ver_zippy-bistre-dragon
+timeout: 5400
