@@ -1,0 +1,1745 @@
+{
+    "meta": {
+        "version": "3.2.1",
+        "report_json_url": "https://raw.githubusercontent.com/eosc-synergy/raster-to-stac.assess.sqaaas/main/.report/assessment_output.json"
+    },
+    "repository": [
+        {
+            "url": "https://gitlab.inf.unibz.it/earth_observation_public/raster-to-stac/",
+            "name": "earth_observation_public/raster-to-stac",
+            "tag": "main",
+            "commit_id": "d9800bca3b09c26dd5360711233abc8e16e37b81",
+            "is_main_repo": true,
+            "badge_status": "no_badge"
+        }
+    ],
+    "report": {
+        "QC.Acc": {
+            "valid": true,
+            "subcriteria": {
+                "QC.Acc01": {
+                    "description": "Is the source code managed with a Version Control System?",
+                    "requirement_level": "MUST",
+                    "hint": "The source code shall be managed with Git and remain publicly available for this criterion to be successful. Please check <a href=\"https://git-scm.com/book/es/v2\" target=\"_blank\">Pro Git</a> docs about how to get started using Git tool. Guidelines provided by the most popular social coding platforms (<a href=\"https://docs.github.com/get-started\" target=\"_blank\">GitHub</a>, <a href=\"https://about.gitlab.com/get-started/\" target=\"_blank\">GitLab</a>) are also a good starting point",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "Source code uses Git for version control",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-boolean",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "git",
+                                "lang": "scm",
+                                "version": "2.34.1",
+                                "docker": {
+                                    "image": "bitnami/git:2.34.1",
+                                    "reviewed": "2021-12-30"
+                                },
+                                "ci": {
+                                    "name": "QC.Acc gitlab.inf.unibz.it/earth_observation_public/raster-to-stac git",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "git rev-parse --is-inside-work-tree "
+                                    ],
+                                    "stdout_text": "true",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/raster-to-stac.assess.sqaaas/job/main/1/execution/node/34/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/raster-to-stac.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {}
+                        }
+                    ],
+                    "valid": true
+                }
+            },
+            "coverage": {
+                "percentage": 100,
+                "total_subcriteria": 1,
+                "success_subcriteria": 1
+            }
+        },
+        "QC.Doc": {
+            "valid": false,
+            "subcriteria": {
+                "QC.Doc06.1": {
+                    "description": "Is the software scope outlined in the code repository?",
+                    "requirement_level": "MUST",
+                    "hint": "A README file presents your software to the audience interested in your software project. Several online sites simplify the task of creating the README file, such as <a href=\"https://www.makeareadme.com/\" target=\"_blank\">Make a README</a> or <a href=\"https://readme.so/\" target=\"_blank\">readme.so</a> sites. Be sure to add it to the code repository's root path",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "A README file is present in the code repository",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-find_doc_files",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "find_doc_files.py",
+                                "lang": "Contribution-enabling Files",
+                                "version": "latest",
+                                "docker": {
+                                    "dockerfile": "QC.Doc/Dockerfile",
+                                    "reviewed": "2022-01-26"
+                                },
+                                "ci": {
+                                    "name": "QC.Doc gitlab.inf.unibz.it/earth_observation_public/raster-to-stac find_doc_files.py",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "find_doc_files.py --file_type all"
+                                    ],
+                                    "stdout_text": "{\"README\": [{\"file_name\": \"README.md\", \"size\": 7997}], \"CODE_OF_CONDUCT\": [], \"CONTRIBUTING\": []}",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/raster-to-stac.assess.sqaaas/job/main/1/execution/node/43/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/raster-to-stac.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "README": [
+                                    {
+                                        "file_name": "README.md",
+                                        "size": 7997
+                                    }
+                                ],
+                                "CODE_OF_CONDUCT": [],
+                                "CONTRIBUTING": []
+                            }
+                        }
+                    ],
+                    "valid": true
+                },
+                "QC.Doc06.3": {
+                    "description": "Does the project establish a code of conduct for its participants?",
+                    "requirement_level": "MUST",
+                    "hint": "A CODE_OF_CONDUCT file sets the path for a constructive, respectful and positive atmosphere among all the contributors in your software project. Of course you can define your own, but in case you want to rely on external and widely-adopted code of conducts check out some of the most popular ones: <a href=\"https://contributor-covenant.org/\" target=\"_blank\">Contributor Covenant</a> or <a href=\"https://web.archive.org/web/20200330154000/http://citizencodeofconduct.org/\" target=\"_blank\">Citizen Code of Conduct</a>",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "A CODE_OF_CONDUCT file is not present in the code repository",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-find_doc_files",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "find_doc_files.py",
+                                "lang": "Contribution-enabling Files",
+                                "version": "latest",
+                                "docker": {
+                                    "dockerfile": "QC.Doc/Dockerfile",
+                                    "reviewed": "2022-01-26"
+                                },
+                                "ci": {
+                                    "name": "QC.Doc gitlab.inf.unibz.it/earth_observation_public/raster-to-stac find_doc_files.py",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "find_doc_files.py --file_type all"
+                                    ],
+                                    "stdout_text": "{\"README\": [{\"file_name\": \"README.md\", \"size\": 7997}], \"CODE_OF_CONDUCT\": [], \"CONTRIBUTING\": []}",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/raster-to-stac.assess.sqaaas/job/main/1/execution/node/43/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/raster-to-stac.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "README": [
+                                    {
+                                        "file_name": "README.md",
+                                        "size": 7997
+                                    }
+                                ],
+                                "CODE_OF_CONDUCT": [],
+                                "CONTRIBUTING": []
+                            }
+                        }
+                    ],
+                    "valid": false,
+                    "required_for_next_level_badge": true
+                },
+                "QC.Doc06.2": {
+                    "description": "Is there a clear path or guidelines on how to contribute to the code?",
+                    "requirement_level": "MUST",
+                    "hint": "A CONTRIBUTING file shall be present in the root path of the code repository describing the expected workflow to follow when adding contributions. Please check <a href=\"https://mozillascience.github.io/working-open-workshop/contributing/\" target=\"_blank\">Mozilla's guidelines</a> and <a href=\"https://github.com/github/docs/blob/main/CONTRIBUTING.md\" target=\"_blank\">GitHub's CONTRIBUTING.md example</a> to get inspired on how to write a good CONTRIBUTING file",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "A CONTRIBUTING file is not present in the code repository",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-find_doc_files",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "find_doc_files.py",
+                                "lang": "Contribution-enabling Files",
+                                "version": "latest",
+                                "docker": {
+                                    "dockerfile": "QC.Doc/Dockerfile",
+                                    "reviewed": "2022-01-26"
+                                },
+                                "ci": {
+                                    "name": "QC.Doc gitlab.inf.unibz.it/earth_observation_public/raster-to-stac find_doc_files.py",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "find_doc_files.py --file_type all"
+                                    ],
+                                    "stdout_text": "{\"README\": [{\"file_name\": \"README.md\", \"size\": 7997}], \"CODE_OF_CONDUCT\": [], \"CONTRIBUTING\": []}",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/raster-to-stac.assess.sqaaas/job/main/1/execution/node/43/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/raster-to-stac.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "README": [
+                                    {
+                                        "file_name": "README.md",
+                                        "size": 7997
+                                    }
+                                ],
+                                "CODE_OF_CONDUCT": [],
+                                "CONTRIBUTING": []
+                            }
+                        }
+                    ],
+                    "valid": false,
+                    "required_for_next_level_badge": true
+                },
+                "QC.Doc01.1": {
+                    "description": "Are docs managed in the same repository as code?",
+                    "requirement_level": "MAY",
+                    "hint": "This subcriterion will succeed if the documentation files exist on the same repository as the source code, e.g. under a <code>docs/</code> folder",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "Documentation resides in the same repository as code",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-boolean",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "git",
+                                "lang": null,
+                                "version": null,
+                                "docker": null,
+                                "ci": {
+                                    "name": "QC.Doc gitlab.inf.unibz.it/earth_observation_public/raster-to-stac git",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "git rev-parse --is-inside-work-tree "
+                                    ],
+                                    "stdout_text": "true",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/raster-to-stac.assess.sqaaas/job/main/1/execution/node/52/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/raster-to-stac.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {}
+                        }
+                    ],
+                    "valid": true
+                },
+                "QC.Doc02.X": {
+                    "description": "Are docs following a style for the Markdown markup language?",
+                    "requirement_level": "MAY",
+                    "hint": "When using a docs-as-code approach, the style of the markup language is being checked. SQAaaS relies on <a href=\"https://github.com/markdownlint/markdownlint/\" target=\"_blank\">markdownlint</a> for Markdown files and <a href=\"https://github.com/twolfson/restructuredtext-lint/\" target=\"_blank\">restructuredtext-lint</a> for reStructuredText",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "Docs are not fully compliant with markdownlint standard",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-markdownlint",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "markdownlint",
+                                "lang": "Markdown",
+                                "version": "0.11.0",
+                                "docker": {
+                                    "dockerfile": "QC.Doc/markdownlint/Dockerfile",
+                                    "reviewed": "1970-01-01"
+                                },
+                                "ci": {
+                                    "name": "QC.Doc gitlab.inf.unibz.it/earth_observation_public/raster-to-stac markdownlint",
+                                    "status": "FAILED",
+                                    "stdout_command": [
+                                        "mdl --json  ."
+                                    ],
+                                    "stdout_text": "[{\"filename\":\"./CHANGELOG.md\",\"line\":7,\"rule\":\"MD012\",\"aliases\":[\"no-multiple-blanks\"],\"description\":\"Multiple consecutive blank lines\"},{\"filename\":\"./CHANGELOG.md\",\"line\":18,\"rule\":\"MD012\",\"aliases\":[\"no-multiple-blanks\"],\"description\":\"Multiple consecutive blank lines\"},{\"filename\":\"./CHANGELOG.md\",\"line\":23,\"rule\":\"MD012\",\"aliases\":[\"no-multiple-blanks\"],\"description\":\"Multiple consecutive blank lines\"},{\"filename\":\"./CHANGELOG.md\",\"line\":24,\"rule\":\"MD012\",\"aliases\":[\"no-multiple-blanks\"],\"description\":\"Multiple consecutive blank lines\"},{\"filename\":\"./CHANGELOG.md\",\"line\":27,\"rule\":\"MD012\",\"aliases\":[\"no-multiple-blanks\"],\"description\":\"Multiple consecutive blank lines\"},{\"filename\":\"./CHANGELOG.md\",\"line\":32,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./CHANGELOG.md\",\"line\":1,\"rule\":\"MD022\",\"aliases\":[\"blanks-around-headers\"],\"description\":\"Headers should be surrounded by blank lines\"},{\"filename\":\"./CHANGELOG.md\",\"line\":21,\"rule\":\"MD024\",\"aliases\":[\"no-duplicate-header\"],\"description\":\"Multiple headers with the same content\"},{\"filename\":\"./CHANGELOG.md\",\"line\":25,\"rule\":\"MD024\",\"aliases\":[\"no-duplicate-header\"],\"description\":\"Multiple headers with the same content\"},{\"filename\":\"./CHANGELOG.md\",\"line\":30,\"rule\":\"MD024\",\"aliases\":[\"no-duplicate-header\"],\"description\":\"Multiple headers with the same content\"},{\"filename\":\"./CHANGELOG.md\",\"line\":35,\"rule\":\"MD024\",\"aliases\":[\"no-duplicate-header\"],\"description\":\"Multiple headers with the same content\"},{\"filename\":\"./README.md\",\"line\":1,\"rule\":\"MD009\",\"aliases\":[\"no-trailing-spaces\"],\"description\":\"Trailing spaces\"},{\"filename\":\"./README.md\",\"line\":2,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./README.md\",\"line\":7,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./README.md\",\"line\":10,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./README.md\",\"line\":34,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./README.md\",\"line\":69,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./README.md\",\"line\":96,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./README.md\",\"line\":98,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./README.md\",\"line\":99,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./README.md\",\"line\":101,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./README.md\",\"line\":137,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./README.md\",\"line\":138,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./README.md\",\"line\":139,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./README.md\",\"line\":140,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./README.md\",\"line\":184,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./README.md\",\"line\":1,\"rule\":\"MD022\",\"aliases\":[\"blanks-around-headers\"],\"description\":\"Headers should be surrounded by blank lines\"},{\"filename\":\"./README.md\",\"line\":9,\"rule\":\"MD029\",\"aliases\":[\"ol-prefix\"],\"description\":\"Ordered list item prefix\"},{\"filename\":\"./README.md\",\"line\":26,\"rule\":\"MD029\",\"aliases\":[\"ol-prefix\"],\"description\":\"Ordered list item prefix\"},{\"filename\":\"./README.md\",\"line\":39,\"rule\":\"MD029\",\"aliases\":[\"ol-prefix\"],\"description\":\"Ordered list item prefix\"},{\"filename\":\"./README.md\",\"line\":88,\"rule\":\"MD029\",\"aliases\":[\"ol-prefix\"],\"description\":\"Ordered list item prefix\"},{\"filename\":\"./README.md\",\"line\":147,\"rule\":\"MD029\",\"aliases\":[\"ol-prefix\"],\"description\":\"Ordered list item prefix\"},{\"filename\":\"./README.md\",\"line\":23,\"rule\":\"MD031\",\"aliases\":[\"blanks-around-fences\"],\"description\":\"Fenced code blocks should be surrounded by blank lines\"},{\"filename\":\"./README.md\",\"line\":25,\"rule\":\"MD031\",\"aliases\":[\"blanks-around-fences\"],\"description\":\"Fenced code blocks should be surrounded by blank lines\"},{\"filename\":\"./README.md\",\"line\":40,\"rule\":\"MD031\",\"aliases\":[\"blanks-around-fences\"],\"description\":\"Fenced code blocks should be surrounded by blank lines\"},{\"filename\":\"./README.md\",\"line\":72,\"rule\":\"MD031\",\"aliases\":[\"blanks-around-fences\"],\"description\":\"Fenced code blocks should be surrounded by blank lines\"},{\"filename\":\"./README.md\",\"line\":6,\"rule\":\"MD032\",\"aliases\":[\"blanks-around-lists\"],\"description\":\"Lists should be surrounded by blank lines\"},{\"filename\":\"./README.md\",\"line\":9,\"rule\":\"MD032\",\"aliases\":[\"blanks-around-lists\"],\"description\":\"Lists should be surrounded by blank lines\"},{\"filename\":\"./README.md\",\"line\":22,\"rule\":\"MD032\",\"aliases\":[\"blanks-around-lists\"],\"description\":\"Lists should be surrounded by blank lines\"},{\"filename\":\"./README.md\",\"line\":26,\"rule\":\"MD032\",\"aliases\":[\"blanks-around-lists\"],\"description\":\"Lists should be surrounded by blank lines\"},{\"filename\":\"./README.md\",\"line\":39,\"rule\":\"MD032\",\"aliases\":[\"blanks-around-lists\"],\"description\":\"Lists should be surrounded by blank lines\"},{\"filename\":\"./README.md\",\"line\":71,\"rule\":\"MD032\",\"aliases\":[\"blanks-around-lists\"],\"description\":\"Lists should be surrounded by blank lines\"},{\"filename\":\"./README.md\",\"line\":53,\"rule\":\"MD033\",\"aliases\":[\"no-inline-html\"],\"description\":\"Inline HTML\"},{\"filename\":\"./README.md\",\"line\":73,\"rule\":\"MD034\",\"aliases\":[\"no-bare-urls\"],\"description\":\"Bare URL used\"},{\"filename\":\"./README.md\",\"line\":74,\"rule\":\"MD034\",\"aliases\":[\"no-bare-urls\"],\"description\":\"Bare URL used\"},{\"filename\":\"./README.md\",\"line\":75,\"rule\":\"MD034\",\"aliases\":[\"no-bare-urls\"],\"description\":\"Bare URL used\"},{\"filename\":\"./README.md\",\"line\":76,\"rule\":\"MD034\",\"aliases\":[\"no-bare-urls\"],\"description\":\"Bare URL used\"}]",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/raster-to-stac.assess.sqaaas/job/main/1/execution/node/61/log?consoleFull"
+                                },
+                                "level": "RECOMMENDED",
+                                "build_repo": "https://github.com/eosc-synergy/raster-to-stac.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "./CHANGELOG.md": {
+                                    "MD012": {
+                                        "description": "Multiple consecutive blank lines",
+                                        "line": [
+                                            7,
+                                            18,
+                                            23,
+                                            24,
+                                            27
+                                        ]
+                                    },
+                                    "MD013": {
+                                        "description": "Line length",
+                                        "line": [
+                                            32
+                                        ]
+                                    },
+                                    "MD022": {
+                                        "description": "Headers should be surrounded by blank lines",
+                                        "line": [
+                                            1
+                                        ]
+                                    },
+                                    "MD024": {
+                                        "description": "Multiple headers with the same content",
+                                        "line": [
+                                            21,
+                                            25,
+                                            30,
+                                            35
+                                        ]
+                                    }
+                                },
+                                "./README.md": {
+                                    "MD009": {
+                                        "description": "Trailing spaces",
+                                        "line": [
+                                            1
+                                        ]
+                                    },
+                                    "MD013": {
+                                        "description": "Line length",
+                                        "line": [
+                                            2,
+                                            7,
+                                            10,
+                                            34,
+                                            69,
+                                            96,
+                                            98,
+                                            99,
+                                            101,
+                                            137,
+                                            138,
+                                            139,
+                                            140,
+                                            184
+                                        ]
+                                    },
+                                    "MD022": {
+                                        "description": "Headers should be surrounded by blank lines",
+                                        "line": [
+                                            1
+                                        ]
+                                    },
+                                    "MD029": {
+                                        "description": "Ordered list item prefix",
+                                        "line": [
+                                            9,
+                                            26,
+                                            39,
+                                            88,
+                                            147
+                                        ]
+                                    },
+                                    "MD031": {
+                                        "description": "Fenced code blocks should be surrounded by blank lines",
+                                        "line": [
+                                            23,
+                                            25,
+                                            40,
+                                            72
+                                        ]
+                                    },
+                                    "MD032": {
+                                        "description": "Lists should be surrounded by blank lines",
+                                        "line": [
+                                            6,
+                                            9,
+                                            22,
+                                            26,
+                                            39,
+                                            71
+                                        ]
+                                    },
+                                    "MD033": {
+                                        "description": "Inline HTML",
+                                        "line": [
+                                            53
+                                        ]
+                                    },
+                                    "MD034": {
+                                        "description": "Bare URL used",
+                                        "line": [
+                                            73,
+                                            74,
+                                            75,
+                                            76
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "valid": false,
+                            "message": "Docs are not fully compliant with restructuredtext-lint standard",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-markdownlint",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "restructuredtext-lint",
+                                "lang": "reStructuredText",
+                                "version": "1.3.2",
+                                "docker": {
+                                    "dockerfile": "QC.Doc/restructuredtext-lint/Dockerfile",
+                                    "reviewed": "2022-01-18"
+                                },
+                                "ci": {
+                                    "name": "QC.Doc gitlab.inf.unibz.it/earth_observation_public/raster-to-stac restructuredtext-lint",
+                                    "status": "FAILED",
+                                    "stdout_command": [
+                                        "rst-lint --level warning --format json ."
+                                    ],
+                                    "stdout_text": "[{\"line\": 9, \"source\": \"./docs/source/index.rst\", \"level\": 3, \"type\": \"ERROR\", \"message\": \"Unknown directive type \\\"toctree\\\".\", \"full_message\": \"Unknown directive type \\\"toctree\\\".\\n\\n.. toctree::\\n   :maxdepth: 2\\n   :caption: Contents:\\n\\n\"}, {\"line\": 32, \"source\": \"./docs/source/index.rst\", \"level\": 3, \"type\": \"ERROR\", \"message\": \"Unknown directive type \\\"toctree\\\".\", \"full_message\": \"Unknown directive type \\\"toctree\\\".\\n\\n.. toctree::\\n   :maxdepth: 2\\n\\n   guide/installation.rst\\n   guide/quickstart.rst\\n   guide/contributing.rst\\n\\n\"}, {\"line\": 50, \"source\": \"./docs/source/index.rst\", \"level\": 3, \"type\": \"ERROR\", \"message\": \"Unknown interpreted text role \\\"ref\\\".\", \"full_message\": \"Unknown interpreted text role \\\"ref\\\".\"}, {\"line\": 51, \"source\": \"./docs/source/index.rst\", \"level\": 3, \"type\": \"ERROR\", \"message\": \"Unknown interpreted text role \\\"ref\\\".\", \"full_message\": \"Unknown interpreted text role \\\"ref\\\".\"}, {\"line\": 52, \"source\": \"./docs/source/index.rst\", \"level\": 3, \"type\": \"ERROR\", \"message\": \"Unknown interpreted text role \\\"ref\\\".\", \"full_message\": \"Unknown interpreted text role \\\"ref\\\".\"}, {\"line\": 26, \"source\": \"./docs/source/guide/quickstart.rst\", \"level\": 2, \"type\": \"WARNING\", \"message\": \"Cannot analyze code. Pygments package not found.\", \"full_message\": \"Cannot analyze code. Pygments package not found.\"}, {\"line\": 32, \"source\": \"./docs/source/guide/quickstart.rst\", \"level\": 2, \"type\": \"WARNING\", \"message\": \"Cannot analyze code. Pygments package not found.\", \"full_message\": \"Cannot analyze code. Pygments package not found.\"}, {\"line\": 46, \"source\": \"./docs/source/guide/quickstart.rst\", \"level\": 2, \"type\": \"WARNING\", \"message\": \"Cannot analyze code. Pygments package not found.\", \"full_message\": \"Cannot analyze code. Pygments package not found.\"}, {\"line\": 83, \"source\": \"./docs/source/guide/quickstart.rst\", \"level\": 2, \"type\": \"WARNING\", \"message\": \"Cannot analyze code. Pygments package not found.\", \"full_message\": \"Cannot analyze code. Pygments package not found.\"}, {\"line\": 91, \"source\": \"./docs/source/guide/quickstart.rst\", \"level\": 2, \"type\": \"WARNING\", \"message\": \"Cannot analyze code. Pygments package not found.\", \"full_message\": \"Cannot analyze code. Pygments package not found.\"}, {\"line\": 103, \"source\": \"./docs/source/guide/quickstart.rst\", \"level\": 2, \"type\": \"WARNING\", \"message\": \"Cannot analyze code. Pygments package not found.\", \"full_message\": \"Cannot analyze code. Pygments package not found.\"}, {\"line\": 162, \"source\": \"./docs/source/guide/quickstart.rst\", \"level\": 2, \"type\": \"WARNING\", \"message\": \"Cannot analyze code. Pygments package not found.\", \"full_message\": \"Cannot analyze code. Pygments package not found.\"}, {\"line\": 15, \"source\": \"./docs/source/guide/installation.rst\", \"level\": 2, \"type\": \"WARNING\", \"message\": \"Cannot analyze code. Pygments package not found.\", \"full_message\": \"Cannot analyze code. Pygments package not found.\"}, {\"line\": 30, \"source\": \"./docs/source/guide/installation.rst\", \"level\": 2, \"type\": \"WARNING\", \"message\": \"Cannot analyze code. Pygments package not found.\", \"full_message\": \"Cannot analyze code. Pygments package not found.\"}]",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/raster-to-stac.assess.sqaaas/job/main/1/execution/node/70/log?consoleFull"
+                                },
+                                "level": "RECOMMENDED",
+                                "build_repo": "https://github.com/eosc-synergy/raster-to-stac.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": [
+                                {
+                                    "line": 9,
+                                    "source": "./docs/source/index.rst",
+                                    "level": 3,
+                                    "type": "ERROR",
+                                    "message": "Unknown directive type \"toctree\".",
+                                    "full_message": "Unknown directive type \"toctree\".\n\n.. toctree::\n   :maxdepth: 2\n   :caption: Contents:\n\n"
+                                },
+                                {
+                                    "line": 32,
+                                    "source": "./docs/source/index.rst",
+                                    "level": 3,
+                                    "type": "ERROR",
+                                    "message": "Unknown directive type \"toctree\".",
+                                    "full_message": "Unknown directive type \"toctree\".\n\n.. toctree::\n   :maxdepth: 2\n\n   guide/installation.rst\n   guide/quickstart.rst\n   guide/contributing.rst\n\n"
+                                },
+                                {
+                                    "line": 50,
+                                    "source": "./docs/source/index.rst",
+                                    "level": 3,
+                                    "type": "ERROR",
+                                    "message": "Unknown interpreted text role \"ref\".",
+                                    "full_message": "Unknown interpreted text role \"ref\"."
+                                },
+                                {
+                                    "line": 51,
+                                    "source": "./docs/source/index.rst",
+                                    "level": 3,
+                                    "type": "ERROR",
+                                    "message": "Unknown interpreted text role \"ref\".",
+                                    "full_message": "Unknown interpreted text role \"ref\"."
+                                },
+                                {
+                                    "line": 52,
+                                    "source": "./docs/source/index.rst",
+                                    "level": 3,
+                                    "type": "ERROR",
+                                    "message": "Unknown interpreted text role \"ref\".",
+                                    "full_message": "Unknown interpreted text role \"ref\"."
+                                },
+                                {
+                                    "line": 26,
+                                    "source": "./docs/source/guide/quickstart.rst",
+                                    "level": 2,
+                                    "type": "WARNING",
+                                    "message": "Cannot analyze code. Pygments package not found.",
+                                    "full_message": "Cannot analyze code. Pygments package not found."
+                                },
+                                {
+                                    "line": 32,
+                                    "source": "./docs/source/guide/quickstart.rst",
+                                    "level": 2,
+                                    "type": "WARNING",
+                                    "message": "Cannot analyze code. Pygments package not found.",
+                                    "full_message": "Cannot analyze code. Pygments package not found."
+                                },
+                                {
+                                    "line": 46,
+                                    "source": "./docs/source/guide/quickstart.rst",
+                                    "level": 2,
+                                    "type": "WARNING",
+                                    "message": "Cannot analyze code. Pygments package not found.",
+                                    "full_message": "Cannot analyze code. Pygments package not found."
+                                },
+                                {
+                                    "line": 83,
+                                    "source": "./docs/source/guide/quickstart.rst",
+                                    "level": 2,
+                                    "type": "WARNING",
+                                    "message": "Cannot analyze code. Pygments package not found.",
+                                    "full_message": "Cannot analyze code. Pygments package not found."
+                                },
+                                {
+                                    "line": 91,
+                                    "source": "./docs/source/guide/quickstart.rst",
+                                    "level": 2,
+                                    "type": "WARNING",
+                                    "message": "Cannot analyze code. Pygments package not found.",
+                                    "full_message": "Cannot analyze code. Pygments package not found."
+                                },
+                                {
+                                    "line": 103,
+                                    "source": "./docs/source/guide/quickstart.rst",
+                                    "level": 2,
+                                    "type": "WARNING",
+                                    "message": "Cannot analyze code. Pygments package not found.",
+                                    "full_message": "Cannot analyze code. Pygments package not found."
+                                },
+                                {
+                                    "line": 162,
+                                    "source": "./docs/source/guide/quickstart.rst",
+                                    "level": 2,
+                                    "type": "WARNING",
+                                    "message": "Cannot analyze code. Pygments package not found.",
+                                    "full_message": "Cannot analyze code. Pygments package not found."
+                                },
+                                {
+                                    "line": 15,
+                                    "source": "./docs/source/guide/installation.rst",
+                                    "level": 2,
+                                    "type": "WARNING",
+                                    "message": "Cannot analyze code. Pygments package not found.",
+                                    "full_message": "Cannot analyze code. Pygments package not found."
+                                },
+                                {
+                                    "line": 30,
+                                    "source": "./docs/source/guide/installation.rst",
+                                    "level": 2,
+                                    "type": "WARNING",
+                                    "message": "Cannot analyze code. Pygments package not found.",
+                                    "full_message": "Cannot analyze code. Pygments package not found."
+                                }
+                            ]
+                        }
+                    ],
+                    "valid": false,
+                    "required_for_next_level_badge": false
+                }
+            },
+            "coverage": {
+                "percentage": 40,
+                "total_subcriteria": 5,
+                "success_subcriteria": 2
+            }
+        },
+        "QC.Lic": {
+            "valid": true,
+            "subcriteria": {
+                "QC.Lic01": {
+                    "description": "Is code licensed to be freely used, modified and distributed by others?",
+                    "requirement_level": "MUST",
+                    "hint": "<p>Your source code repository shall be distributed under an open source license for this subcriterion to pass successfully. Be sure to have a license file present in the code repository matching the name <code>LICENSE</code> with optional extensions (depending on the format used): <code>[.md|.rst|.txt]</code>.</p><p>Valid licenses are any of those approved either by the <a href=\"https://opensource.org/licenses\" target=\"_blank\">Open Source Initiative</a> and/or the Free Software Foundation <a href=\"https://www.gnu.org/licenses/license-list.html\" target=\"_blank\"></a>. You can also check the <a href=\"https://choosealicense.com/\" target=\"_blank\">choosealicense.com</a> site</p>",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "An Open Source license found in the code repository: MIT",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-licensee",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "licensee",
+                                "lang": "license",
+                                "version": "9.17.0",
+                                "docker": {
+                                    "image": "eoscsynergy/sqaaas-licensee:9.17.0",
+                                    "reviewed": "2021-06-28"
+                                },
+                                "ci": {
+                                    "name": "QC.Lic gitlab.inf.unibz.it/earth_observation_public/raster-to-stac licensee",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "licensee detect . --confidence 60 --json "
+                                    ],
+                                    "stdout_text": "{\"licenses\":[{\"key\":\"mit\",\"spdx_id\":\"MIT\",\"meta\":{\"title\":\"MIT License\",\"source\":\"https://spdx.org/licenses/MIT.html\",\"description\":\"A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.\",\"how\":\"Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.\",\"using\":{\"Babel\":\"https://github.com/babel/babel/blob/master/LICENSE\",\".NET\":\"https://github.com/dotnet/runtime/blob/main/LICENSE.TXT\",\"Rails\":\"https://github.com/rails/rails/blob/master/MIT-LICENSE\"},\"featured\":true,\"hidden\":false,\"nickname\":null,\"note\":null},\"url\":\"http://choosealicense.com/licenses/mit/\",\"rules\":{\"permissions\":[{\"tag\":\"commercial-use\",\"label\":\"Commercial use\",\"description\":\"The licensed material and derivatives may be used for commercial purposes.\"},{\"tag\":\"modifications\",\"label\":\"Modification\",\"description\":\"The licensed material may be modified.\"},{\"tag\":\"distribution\",\"label\":\"Distribution\",\"description\":\"The licensed material may be distributed.\"},{\"tag\":\"private-use\",\"label\":\"Private use\",\"description\":\"The licensed material may be used and modified in private.\"}],\"conditions\":[{\"tag\":\"include-copyright\",\"label\":\"License and copyright notice\",\"description\":\"A copy of the license and copyright notice must be included with the licensed material.\"}],\"limitations\":[{\"tag\":\"liability\",\"label\":\"Liability\",\"description\":\"This license includes a limitation of liability.\"},{\"tag\":\"warranty\",\"label\":\"Warranty\",\"description\":\"This license explicitly states that it does NOT provide any warranty.\"}]},\"fields\":[{\"name\":\"year\",\"description\":\"The current year\"},{\"name\":\"fullname\",\"description\":\"The full name or username of the repository owner\"}],\"other\":false,\"gpl\":false,\"lgpl\":false,\"cc\":false}],\"matched_files\":[{\"filename\":\"LICENSE\",\"content\":\"MIT License\\n\\nCopyright (c) 2024 Eurac Research - Institute for Earth Observation\\n\\nPermission is hereby granted, free of charge, to any person obtaining a copy\\nof this software and associated documentation files (the \\\"Software\\\"), to deal\\nin the Software without restriction, including without limitation the rights\\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\\ncopies of the Software, and to permit persons to whom the Software is\\nfurnished to do so, subject to the following conditions:\\n\\nThe above copyright notice and this permission notice shall be included in all\\ncopies or substantial portions of the Software.\\n\\nTHE SOFTWARE IS PROVIDED \\\"AS IS\\\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\\nSOFTWARE.\\n\",\"content_hash\":\"4c2c763d64bbc7ef2e58b0ec6d06d90cee9755c9\",\"content_normalized\":\"permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'software'), to deal in the software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software, and to permit persons to whom the software is furnished to do so, subject to the following conditions: the above copyright notice and this permission notice shall be included in all copies or substantial portions of the software. the software is provided 'as is', without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. in no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.\",\"matcher\":{\"name\":\"exact\",\"confidence\":100},\"matched_license\":\"MIT\",\"attribution\":\"Copyright (c) 2024 Eurac Research - Institute for Earth Observation\"},{\"filename\":\"README.md\",\"content\":\"This project is distributed with MIT license - see 'LICENSE' for details.\",\"content_hash\":\"ed6659d1ac682fd1604ff334a3b80413e55f71df\",\"content_normalized\":\"this project is distributed with mit license - see 'license' for details.\",\"matcher\":{\"name\":\"reference\",\"confidence\":90},\"matched_license\":\"MIT\",\"attribution\":null}]}",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/raster-to-stac.assess.sqaaas/job/main/1/execution/node/79/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/raster-to-stac.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "licenses": [
+                                    {
+                                        "key": "mit",
+                                        "spdx_id": "MIT",
+                                        "meta": {
+                                            "title": "MIT License",
+                                            "source": "https://spdx.org/licenses/MIT.html",
+                                            "description": "A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.",
+                                            "how": "Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.",
+                                            "using": {
+                                                "Babel": "https://github.com/babel/babel/blob/master/LICENSE",
+                                                ".NET": "https://github.com/dotnet/runtime/blob/main/LICENSE.TXT",
+                                                "Rails": "https://github.com/rails/rails/blob/master/MIT-LICENSE"
+                                            },
+                                            "featured": true,
+                                            "hidden": false,
+                                            "nickname": null,
+                                            "note": null
+                                        },
+                                        "url": "http://choosealicense.com/licenses/mit/",
+                                        "rules": {
+                                            "permissions": [
+                                                {
+                                                    "tag": "commercial-use",
+                                                    "label": "Commercial use",
+                                                    "description": "The licensed material and derivatives may be used for commercial purposes."
+                                                },
+                                                {
+                                                    "tag": "modifications",
+                                                    "label": "Modification",
+                                                    "description": "The licensed material may be modified."
+                                                },
+                                                {
+                                                    "tag": "distribution",
+                                                    "label": "Distribution",
+                                                    "description": "The licensed material may be distributed."
+                                                },
+                                                {
+                                                    "tag": "private-use",
+                                                    "label": "Private use",
+                                                    "description": "The licensed material may be used and modified in private."
+                                                }
+                                            ],
+                                            "conditions": [
+                                                {
+                                                    "tag": "include-copyright",
+                                                    "label": "License and copyright notice",
+                                                    "description": "A copy of the license and copyright notice must be included with the licensed material."
+                                                }
+                                            ],
+                                            "limitations": [
+                                                {
+                                                    "tag": "liability",
+                                                    "label": "Liability",
+                                                    "description": "This license includes a limitation of liability."
+                                                },
+                                                {
+                                                    "tag": "warranty",
+                                                    "label": "Warranty",
+                                                    "description": "This license explicitly states that it does NOT provide any warranty."
+                                                }
+                                            ]
+                                        },
+                                        "fields": [
+                                            {
+                                                "name": "year",
+                                                "description": "The current year"
+                                            },
+                                            {
+                                                "name": "fullname",
+                                                "description": "The full name or username of the repository owner"
+                                            }
+                                        ],
+                                        "other": false,
+                                        "gpl": false,
+                                        "lgpl": false,
+                                        "cc": false
+                                    }
+                                ],
+                                "matched_files": [
+                                    {
+                                        "filename": "LICENSE",
+                                        "content": "MIT License\n\nCopyright (c) 2024 Eurac Research - Institute for Earth Observation\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n",
+                                        "content_hash": "4c2c763d64bbc7ef2e58b0ec6d06d90cee9755c9",
+                                        "content_normalized": "permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'software'), to deal in the software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software, and to permit persons to whom the software is furnished to do so, subject to the following conditions: the above copyright notice and this permission notice shall be included in all copies or substantial portions of the software. the software is provided 'as is', without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. in no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.",
+                                        "matcher": {
+                                            "name": "exact",
+                                            "confidence": 100
+                                        },
+                                        "matched_license": "MIT",
+                                        "attribution": "Copyright (c) 2024 Eurac Research - Institute for Earth Observation"
+                                    },
+                                    {
+                                        "filename": "README.md",
+                                        "content": "This project is distributed with MIT license - see 'LICENSE' for details.",
+                                        "content_hash": "ed6659d1ac682fd1604ff334a3b80413e55f71df",
+                                        "content_normalized": "this project is distributed with mit license - see 'license' for details.",
+                                        "matcher": {
+                                            "name": "reference",
+                                            "confidence": 90
+                                        },
+                                        "matched_license": "MIT",
+                                        "attribution": null
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "valid": true
+                },
+                "QC.Lic01.1": {
+                    "description": "Is LICENSE file placed in the root path of the code repository?",
+                    "requirement_level": "MUST",
+                    "hint": "Most social coding platforms require the license file to placed in the root path of the code repository, so it is a good practice to use this location by default. Allowed file names are <code>LICENSE</code>, <code>LICENSE.md</code>, <code>LICENSE.rst</code>, <code>LICENSE.txt</code>",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "LICENSE file is visible at the root path of the code repository: LICENSE",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-licensee",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "licensee",
+                                "lang": "license",
+                                "version": "9.17.0",
+                                "docker": {
+                                    "image": "eoscsynergy/sqaaas-licensee:9.17.0",
+                                    "reviewed": "2021-06-28"
+                                },
+                                "ci": {
+                                    "name": "QC.Lic gitlab.inf.unibz.it/earth_observation_public/raster-to-stac licensee",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "licensee detect . --confidence 60 --json "
+                                    ],
+                                    "stdout_text": "{\"licenses\":[{\"key\":\"mit\",\"spdx_id\":\"MIT\",\"meta\":{\"title\":\"MIT License\",\"source\":\"https://spdx.org/licenses/MIT.html\",\"description\":\"A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.\",\"how\":\"Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.\",\"using\":{\"Babel\":\"https://github.com/babel/babel/blob/master/LICENSE\",\".NET\":\"https://github.com/dotnet/runtime/blob/main/LICENSE.TXT\",\"Rails\":\"https://github.com/rails/rails/blob/master/MIT-LICENSE\"},\"featured\":true,\"hidden\":false,\"nickname\":null,\"note\":null},\"url\":\"http://choosealicense.com/licenses/mit/\",\"rules\":{\"permissions\":[{\"tag\":\"commercial-use\",\"label\":\"Commercial use\",\"description\":\"The licensed material and derivatives may be used for commercial purposes.\"},{\"tag\":\"modifications\",\"label\":\"Modification\",\"description\":\"The licensed material may be modified.\"},{\"tag\":\"distribution\",\"label\":\"Distribution\",\"description\":\"The licensed material may be distributed.\"},{\"tag\":\"private-use\",\"label\":\"Private use\",\"description\":\"The licensed material may be used and modified in private.\"}],\"conditions\":[{\"tag\":\"include-copyright\",\"label\":\"License and copyright notice\",\"description\":\"A copy of the license and copyright notice must be included with the licensed material.\"}],\"limitations\":[{\"tag\":\"liability\",\"label\":\"Liability\",\"description\":\"This license includes a limitation of liability.\"},{\"tag\":\"warranty\",\"label\":\"Warranty\",\"description\":\"This license explicitly states that it does NOT provide any warranty.\"}]},\"fields\":[{\"name\":\"year\",\"description\":\"The current year\"},{\"name\":\"fullname\",\"description\":\"The full name or username of the repository owner\"}],\"other\":false,\"gpl\":false,\"lgpl\":false,\"cc\":false}],\"matched_files\":[{\"filename\":\"LICENSE\",\"content\":\"MIT License\\n\\nCopyright (c) 2024 Eurac Research - Institute for Earth Observation\\n\\nPermission is hereby granted, free of charge, to any person obtaining a copy\\nof this software and associated documentation files (the \\\"Software\\\"), to deal\\nin the Software without restriction, including without limitation the rights\\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\\ncopies of the Software, and to permit persons to whom the Software is\\nfurnished to do so, subject to the following conditions:\\n\\nThe above copyright notice and this permission notice shall be included in all\\ncopies or substantial portions of the Software.\\n\\nTHE SOFTWARE IS PROVIDED \\\"AS IS\\\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\\nSOFTWARE.\\n\",\"content_hash\":\"4c2c763d64bbc7ef2e58b0ec6d06d90cee9755c9\",\"content_normalized\":\"permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'software'), to deal in the software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software, and to permit persons to whom the software is furnished to do so, subject to the following conditions: the above copyright notice and this permission notice shall be included in all copies or substantial portions of the software. the software is provided 'as is', without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. in no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.\",\"matcher\":{\"name\":\"exact\",\"confidence\":100},\"matched_license\":\"MIT\",\"attribution\":\"Copyright (c) 2024 Eurac Research - Institute for Earth Observation\"},{\"filename\":\"README.md\",\"content\":\"This project is distributed with MIT license - see 'LICENSE' for details.\",\"content_hash\":\"ed6659d1ac682fd1604ff334a3b80413e55f71df\",\"content_normalized\":\"this project is distributed with mit license - see 'license' for details.\",\"matcher\":{\"name\":\"reference\",\"confidence\":90},\"matched_license\":\"MIT\",\"attribution\":null}]}",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/raster-to-stac.assess.sqaaas/job/main/1/execution/node/79/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/raster-to-stac.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "licenses": [
+                                    {
+                                        "key": "mit",
+                                        "spdx_id": "MIT",
+                                        "meta": {
+                                            "title": "MIT License",
+                                            "source": "https://spdx.org/licenses/MIT.html",
+                                            "description": "A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.",
+                                            "how": "Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.",
+                                            "using": {
+                                                "Babel": "https://github.com/babel/babel/blob/master/LICENSE",
+                                                ".NET": "https://github.com/dotnet/runtime/blob/main/LICENSE.TXT",
+                                                "Rails": "https://github.com/rails/rails/blob/master/MIT-LICENSE"
+                                            },
+                                            "featured": true,
+                                            "hidden": false,
+                                            "nickname": null,
+                                            "note": null
+                                        },
+                                        "url": "http://choosealicense.com/licenses/mit/",
+                                        "rules": {
+                                            "permissions": [
+                                                {
+                                                    "tag": "commercial-use",
+                                                    "label": "Commercial use",
+                                                    "description": "The licensed material and derivatives may be used for commercial purposes."
+                                                },
+                                                {
+                                                    "tag": "modifications",
+                                                    "label": "Modification",
+                                                    "description": "The licensed material may be modified."
+                                                },
+                                                {
+                                                    "tag": "distribution",
+                                                    "label": "Distribution",
+                                                    "description": "The licensed material may be distributed."
+                                                },
+                                                {
+                                                    "tag": "private-use",
+                                                    "label": "Private use",
+                                                    "description": "The licensed material may be used and modified in private."
+                                                }
+                                            ],
+                                            "conditions": [
+                                                {
+                                                    "tag": "include-copyright",
+                                                    "label": "License and copyright notice",
+                                                    "description": "A copy of the license and copyright notice must be included with the licensed material."
+                                                }
+                                            ],
+                                            "limitations": [
+                                                {
+                                                    "tag": "liability",
+                                                    "label": "Liability",
+                                                    "description": "This license includes a limitation of liability."
+                                                },
+                                                {
+                                                    "tag": "warranty",
+                                                    "label": "Warranty",
+                                                    "description": "This license explicitly states that it does NOT provide any warranty."
+                                                }
+                                            ]
+                                        },
+                                        "fields": [
+                                            {
+                                                "name": "year",
+                                                "description": "The current year"
+                                            },
+                                            {
+                                                "name": "fullname",
+                                                "description": "The full name or username of the repository owner"
+                                            }
+                                        ],
+                                        "other": false,
+                                        "gpl": false,
+                                        "lgpl": false,
+                                        "cc": false
+                                    }
+                                ],
+                                "matched_files": [
+                                    {
+                                        "filename": "LICENSE",
+                                        "content": "MIT License\n\nCopyright (c) 2024 Eurac Research - Institute for Earth Observation\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n",
+                                        "content_hash": "4c2c763d64bbc7ef2e58b0ec6d06d90cee9755c9",
+                                        "content_normalized": "permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'software'), to deal in the software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software, and to permit persons to whom the software is furnished to do so, subject to the following conditions: the above copyright notice and this permission notice shall be included in all copies or substantial portions of the software. the software is provided 'as is', without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. in no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.",
+                                        "matcher": {
+                                            "name": "exact",
+                                            "confidence": 100
+                                        },
+                                        "matched_license": "MIT",
+                                        "attribution": "Copyright (c) 2024 Eurac Research - Institute for Earth Observation"
+                                    },
+                                    {
+                                        "filename": "README.md",
+                                        "content": "This project is distributed with MIT license - see 'LICENSE' for details.",
+                                        "content_hash": "ed6659d1ac682fd1604ff334a3b80413e55f71df",
+                                        "content_normalized": "this project is distributed with mit license - see 'license' for details.",
+                                        "matcher": {
+                                            "name": "reference",
+                                            "confidence": 90
+                                        },
+                                        "matched_license": "MIT",
+                                        "attribution": null
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "valid": true
+                },
+                "QC.Lic02": {
+                    "description": "Does the code use a license approved by Open Source Initiative?",
+                    "requirement_level": "MUST",
+                    "hint": "The <a href=\"https://opensource.org/\" target=\"_blank\">Open Source Initiative (OSI)</a> sets out the requirements for software to be legally declared as Open Source. The license in use shall be in the list of <a href=\"https://opensource.org/license-list.html\" target=\"_blank\">OSI-approved licenses</a> for this criterion to be successful",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "License MIT is approved by the Open Source Initiative",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-licensee",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "licensee",
+                                "lang": "license",
+                                "version": "9.17.0",
+                                "docker": {
+                                    "image": "eoscsynergy/sqaaas-licensee:9.17.0",
+                                    "reviewed": "2021-06-28"
+                                },
+                                "ci": {
+                                    "name": "QC.Lic gitlab.inf.unibz.it/earth_observation_public/raster-to-stac licensee",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "licensee detect . --confidence 60 --json "
+                                    ],
+                                    "stdout_text": "{\"licenses\":[{\"key\":\"mit\",\"spdx_id\":\"MIT\",\"meta\":{\"title\":\"MIT License\",\"source\":\"https://spdx.org/licenses/MIT.html\",\"description\":\"A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.\",\"how\":\"Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.\",\"using\":{\"Babel\":\"https://github.com/babel/babel/blob/master/LICENSE\",\".NET\":\"https://github.com/dotnet/runtime/blob/main/LICENSE.TXT\",\"Rails\":\"https://github.com/rails/rails/blob/master/MIT-LICENSE\"},\"featured\":true,\"hidden\":false,\"nickname\":null,\"note\":null},\"url\":\"http://choosealicense.com/licenses/mit/\",\"rules\":{\"permissions\":[{\"tag\":\"commercial-use\",\"label\":\"Commercial use\",\"description\":\"The licensed material and derivatives may be used for commercial purposes.\"},{\"tag\":\"modifications\",\"label\":\"Modification\",\"description\":\"The licensed material may be modified.\"},{\"tag\":\"distribution\",\"label\":\"Distribution\",\"description\":\"The licensed material may be distributed.\"},{\"tag\":\"private-use\",\"label\":\"Private use\",\"description\":\"The licensed material may be used and modified in private.\"}],\"conditions\":[{\"tag\":\"include-copyright\",\"label\":\"License and copyright notice\",\"description\":\"A copy of the license and copyright notice must be included with the licensed material.\"}],\"limitations\":[{\"tag\":\"liability\",\"label\":\"Liability\",\"description\":\"This license includes a limitation of liability.\"},{\"tag\":\"warranty\",\"label\":\"Warranty\",\"description\":\"This license explicitly states that it does NOT provide any warranty.\"}]},\"fields\":[{\"name\":\"year\",\"description\":\"The current year\"},{\"name\":\"fullname\",\"description\":\"The full name or username of the repository owner\"}],\"other\":false,\"gpl\":false,\"lgpl\":false,\"cc\":false}],\"matched_files\":[{\"filename\":\"LICENSE\",\"content\":\"MIT License\\n\\nCopyright (c) 2024 Eurac Research - Institute for Earth Observation\\n\\nPermission is hereby granted, free of charge, to any person obtaining a copy\\nof this software and associated documentation files (the \\\"Software\\\"), to deal\\nin the Software without restriction, including without limitation the rights\\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\\ncopies of the Software, and to permit persons to whom the Software is\\nfurnished to do so, subject to the following conditions:\\n\\nThe above copyright notice and this permission notice shall be included in all\\ncopies or substantial portions of the Software.\\n\\nTHE SOFTWARE IS PROVIDED \\\"AS IS\\\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\\nSOFTWARE.\\n\",\"content_hash\":\"4c2c763d64bbc7ef2e58b0ec6d06d90cee9755c9\",\"content_normalized\":\"permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'software'), to deal in the software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software, and to permit persons to whom the software is furnished to do so, subject to the following conditions: the above copyright notice and this permission notice shall be included in all copies or substantial portions of the software. the software is provided 'as is', without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. in no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.\",\"matcher\":{\"name\":\"exact\",\"confidence\":100},\"matched_license\":\"MIT\",\"attribution\":\"Copyright (c) 2024 Eurac Research - Institute for Earth Observation\"},{\"filename\":\"README.md\",\"content\":\"This project is distributed with MIT license - see 'LICENSE' for details.\",\"content_hash\":\"ed6659d1ac682fd1604ff334a3b80413e55f71df\",\"content_normalized\":\"this project is distributed with mit license - see 'license' for details.\",\"matcher\":{\"name\":\"reference\",\"confidence\":90},\"matched_license\":\"MIT\",\"attribution\":null}]}",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/raster-to-stac.assess.sqaaas/job/main/1/execution/node/79/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/raster-to-stac.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "licenses": [
+                                    {
+                                        "key": "mit",
+                                        "spdx_id": "MIT",
+                                        "meta": {
+                                            "title": "MIT License",
+                                            "source": "https://spdx.org/licenses/MIT.html",
+                                            "description": "A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.",
+                                            "how": "Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.",
+                                            "using": {
+                                                "Babel": "https://github.com/babel/babel/blob/master/LICENSE",
+                                                ".NET": "https://github.com/dotnet/runtime/blob/main/LICENSE.TXT",
+                                                "Rails": "https://github.com/rails/rails/blob/master/MIT-LICENSE"
+                                            },
+                                            "featured": true,
+                                            "hidden": false,
+                                            "nickname": null,
+                                            "note": null
+                                        },
+                                        "url": "http://choosealicense.com/licenses/mit/",
+                                        "rules": {
+                                            "permissions": [
+                                                {
+                                                    "tag": "commercial-use",
+                                                    "label": "Commercial use",
+                                                    "description": "The licensed material and derivatives may be used for commercial purposes."
+                                                },
+                                                {
+                                                    "tag": "modifications",
+                                                    "label": "Modification",
+                                                    "description": "The licensed material may be modified."
+                                                },
+                                                {
+                                                    "tag": "distribution",
+                                                    "label": "Distribution",
+                                                    "description": "The licensed material may be distributed."
+                                                },
+                                                {
+                                                    "tag": "private-use",
+                                                    "label": "Private use",
+                                                    "description": "The licensed material may be used and modified in private."
+                                                }
+                                            ],
+                                            "conditions": [
+                                                {
+                                                    "tag": "include-copyright",
+                                                    "label": "License and copyright notice",
+                                                    "description": "A copy of the license and copyright notice must be included with the licensed material."
+                                                }
+                                            ],
+                                            "limitations": [
+                                                {
+                                                    "tag": "liability",
+                                                    "label": "Liability",
+                                                    "description": "This license includes a limitation of liability."
+                                                },
+                                                {
+                                                    "tag": "warranty",
+                                                    "label": "Warranty",
+                                                    "description": "This license explicitly states that it does NOT provide any warranty."
+                                                }
+                                            ]
+                                        },
+                                        "fields": [
+                                            {
+                                                "name": "year",
+                                                "description": "The current year"
+                                            },
+                                            {
+                                                "name": "fullname",
+                                                "description": "The full name or username of the repository owner"
+                                            }
+                                        ],
+                                        "other": false,
+                                        "gpl": false,
+                                        "lgpl": false,
+                                        "cc": false
+                                    }
+                                ],
+                                "matched_files": [
+                                    {
+                                        "filename": "LICENSE",
+                                        "content": "MIT License\n\nCopyright (c) 2024 Eurac Research - Institute for Earth Observation\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n",
+                                        "content_hash": "4c2c763d64bbc7ef2e58b0ec6d06d90cee9755c9",
+                                        "content_normalized": "permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'software'), to deal in the software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software, and to permit persons to whom the software is furnished to do so, subject to the following conditions: the above copyright notice and this permission notice shall be included in all copies or substantial portions of the software. the software is provided 'as is', without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. in no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.",
+                                        "matcher": {
+                                            "name": "exact",
+                                            "confidence": 100
+                                        },
+                                        "matched_license": "MIT",
+                                        "attribution": "Copyright (c) 2024 Eurac Research - Institute for Earth Observation"
+                                    },
+                                    {
+                                        "filename": "README.md",
+                                        "content": "This project is distributed with MIT license - see 'LICENSE' for details.",
+                                        "content_hash": "ed6659d1ac682fd1604ff334a3b80413e55f71df",
+                                        "content_normalized": "this project is distributed with mit license - see 'license' for details.",
+                                        "matcher": {
+                                            "name": "reference",
+                                            "confidence": 90
+                                        },
+                                        "matched_license": "MIT",
+                                        "attribution": null
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "valid": true
+                },
+                "QC.Lic02.1": {
+                    "description": "Does the code use an Open Source Initiative's popular-recognized license?",
+                    "requirement_level": "MAY",
+                    "hint": "The Open Source Initiative (OSI) sets out the requirements for software to be legally declared as Open Source. OSI provides a list of popular licenses that shall match most of the demands. The license in use shall be in the list of <a href=\"https://opensource.org/license-list.html\" target=\"_blank\">OSI popular licenses</a> for this criterion to be successful",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "License MIT is listed under the Open Source Initiative popular category",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-licensee",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "licensee",
+                                "lang": "license",
+                                "version": "9.17.0",
+                                "docker": {
+                                    "image": "eoscsynergy/sqaaas-licensee:9.17.0",
+                                    "reviewed": "2021-06-28"
+                                },
+                                "ci": {
+                                    "name": "QC.Lic gitlab.inf.unibz.it/earth_observation_public/raster-to-stac licensee",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "licensee detect . --confidence 60 --json "
+                                    ],
+                                    "stdout_text": "{\"licenses\":[{\"key\":\"mit\",\"spdx_id\":\"MIT\",\"meta\":{\"title\":\"MIT License\",\"source\":\"https://spdx.org/licenses/MIT.html\",\"description\":\"A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.\",\"how\":\"Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.\",\"using\":{\"Babel\":\"https://github.com/babel/babel/blob/master/LICENSE\",\".NET\":\"https://github.com/dotnet/runtime/blob/main/LICENSE.TXT\",\"Rails\":\"https://github.com/rails/rails/blob/master/MIT-LICENSE\"},\"featured\":true,\"hidden\":false,\"nickname\":null,\"note\":null},\"url\":\"http://choosealicense.com/licenses/mit/\",\"rules\":{\"permissions\":[{\"tag\":\"commercial-use\",\"label\":\"Commercial use\",\"description\":\"The licensed material and derivatives may be used for commercial purposes.\"},{\"tag\":\"modifications\",\"label\":\"Modification\",\"description\":\"The licensed material may be modified.\"},{\"tag\":\"distribution\",\"label\":\"Distribution\",\"description\":\"The licensed material may be distributed.\"},{\"tag\":\"private-use\",\"label\":\"Private use\",\"description\":\"The licensed material may be used and modified in private.\"}],\"conditions\":[{\"tag\":\"include-copyright\",\"label\":\"License and copyright notice\",\"description\":\"A copy of the license and copyright notice must be included with the licensed material.\"}],\"limitations\":[{\"tag\":\"liability\",\"label\":\"Liability\",\"description\":\"This license includes a limitation of liability.\"},{\"tag\":\"warranty\",\"label\":\"Warranty\",\"description\":\"This license explicitly states that it does NOT provide any warranty.\"}]},\"fields\":[{\"name\":\"year\",\"description\":\"The current year\"},{\"name\":\"fullname\",\"description\":\"The full name or username of the repository owner\"}],\"other\":false,\"gpl\":false,\"lgpl\":false,\"cc\":false}],\"matched_files\":[{\"filename\":\"LICENSE\",\"content\":\"MIT License\\n\\nCopyright (c) 2024 Eurac Research - Institute for Earth Observation\\n\\nPermission is hereby granted, free of charge, to any person obtaining a copy\\nof this software and associated documentation files (the \\\"Software\\\"), to deal\\nin the Software without restriction, including without limitation the rights\\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\\ncopies of the Software, and to permit persons to whom the Software is\\nfurnished to do so, subject to the following conditions:\\n\\nThe above copyright notice and this permission notice shall be included in all\\ncopies or substantial portions of the Software.\\n\\nTHE SOFTWARE IS PROVIDED \\\"AS IS\\\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\\nSOFTWARE.\\n\",\"content_hash\":\"4c2c763d64bbc7ef2e58b0ec6d06d90cee9755c9\",\"content_normalized\":\"permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'software'), to deal in the software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software, and to permit persons to whom the software is furnished to do so, subject to the following conditions: the above copyright notice and this permission notice shall be included in all copies or substantial portions of the software. the software is provided 'as is', without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. in no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.\",\"matcher\":{\"name\":\"exact\",\"confidence\":100},\"matched_license\":\"MIT\",\"attribution\":\"Copyright (c) 2024 Eurac Research - Institute for Earth Observation\"},{\"filename\":\"README.md\",\"content\":\"This project is distributed with MIT license - see 'LICENSE' for details.\",\"content_hash\":\"ed6659d1ac682fd1604ff334a3b80413e55f71df\",\"content_normalized\":\"this project is distributed with mit license - see 'license' for details.\",\"matcher\":{\"name\":\"reference\",\"confidence\":90},\"matched_license\":\"MIT\",\"attribution\":null}]}",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/raster-to-stac.assess.sqaaas/job/main/1/execution/node/79/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/raster-to-stac.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "licenses": [
+                                    {
+                                        "key": "mit",
+                                        "spdx_id": "MIT",
+                                        "meta": {
+                                            "title": "MIT License",
+                                            "source": "https://spdx.org/licenses/MIT.html",
+                                            "description": "A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.",
+                                            "how": "Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.",
+                                            "using": {
+                                                "Babel": "https://github.com/babel/babel/blob/master/LICENSE",
+                                                ".NET": "https://github.com/dotnet/runtime/blob/main/LICENSE.TXT",
+                                                "Rails": "https://github.com/rails/rails/blob/master/MIT-LICENSE"
+                                            },
+                                            "featured": true,
+                                            "hidden": false,
+                                            "nickname": null,
+                                            "note": null
+                                        },
+                                        "url": "http://choosealicense.com/licenses/mit/",
+                                        "rules": {
+                                            "permissions": [
+                                                {
+                                                    "tag": "commercial-use",
+                                                    "label": "Commercial use",
+                                                    "description": "The licensed material and derivatives may be used for commercial purposes."
+                                                },
+                                                {
+                                                    "tag": "modifications",
+                                                    "label": "Modification",
+                                                    "description": "The licensed material may be modified."
+                                                },
+                                                {
+                                                    "tag": "distribution",
+                                                    "label": "Distribution",
+                                                    "description": "The licensed material may be distributed."
+                                                },
+                                                {
+                                                    "tag": "private-use",
+                                                    "label": "Private use",
+                                                    "description": "The licensed material may be used and modified in private."
+                                                }
+                                            ],
+                                            "conditions": [
+                                                {
+                                                    "tag": "include-copyright",
+                                                    "label": "License and copyright notice",
+                                                    "description": "A copy of the license and copyright notice must be included with the licensed material."
+                                                }
+                                            ],
+                                            "limitations": [
+                                                {
+                                                    "tag": "liability",
+                                                    "label": "Liability",
+                                                    "description": "This license includes a limitation of liability."
+                                                },
+                                                {
+                                                    "tag": "warranty",
+                                                    "label": "Warranty",
+                                                    "description": "This license explicitly states that it does NOT provide any warranty."
+                                                }
+                                            ]
+                                        },
+                                        "fields": [
+                                            {
+                                                "name": "year",
+                                                "description": "The current year"
+                                            },
+                                            {
+                                                "name": "fullname",
+                                                "description": "The full name or username of the repository owner"
+                                            }
+                                        ],
+                                        "other": false,
+                                        "gpl": false,
+                                        "lgpl": false,
+                                        "cc": false
+                                    }
+                                ],
+                                "matched_files": [
+                                    {
+                                        "filename": "LICENSE",
+                                        "content": "MIT License\n\nCopyright (c) 2024 Eurac Research - Institute for Earth Observation\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n",
+                                        "content_hash": "4c2c763d64bbc7ef2e58b0ec6d06d90cee9755c9",
+                                        "content_normalized": "permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'software'), to deal in the software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software, and to permit persons to whom the software is furnished to do so, subject to the following conditions: the above copyright notice and this permission notice shall be included in all copies or substantial portions of the software. the software is provided 'as is', without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. in no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.",
+                                        "matcher": {
+                                            "name": "exact",
+                                            "confidence": 100
+                                        },
+                                        "matched_license": "MIT",
+                                        "attribution": "Copyright (c) 2024 Eurac Research - Institute for Earth Observation"
+                                    },
+                                    {
+                                        "filename": "README.md",
+                                        "content": "This project is distributed with MIT license - see 'LICENSE' for details.",
+                                        "content_hash": "ed6659d1ac682fd1604ff334a3b80413e55f71df",
+                                        "content_normalized": "this project is distributed with mit license - see 'license' for details.",
+                                        "matcher": {
+                                            "name": "reference",
+                                            "confidence": 90
+                                        },
+                                        "matched_license": "MIT",
+                                        "attribution": null
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "valid": true
+                }
+            },
+            "coverage": {
+                "percentage": 100,
+                "total_subcriteria": 4,
+                "success_subcriteria": 4
+            }
+        },
+        "QC.Sec": {
+            "valid": true,
+            "subcriteria": {
+                "QC.Sec02": {
+                    "description": "Is the source code passing Static Analysis Security Testing (SAST)?",
+                    "requirement_level": "MUST",
+                    "hint": "Please check & solve the security weaknesses found by the SAST tool",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "Source code files pass SAST checks performed by bandit tool",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-bandit",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "bandit",
+                                "lang": "Python",
+                                "version": "1.7.4",
+                                "docker": {
+                                    "dockerfile": "QC.Sec/bandit/Dockerfile",
+                                    "reviewed": "2022-03-04"
+                                },
+                                "ci": {
+                                    "name": "QC.Sec gitlab.inf.unibz.it/earth_observation_public/raster-to-stac bandit",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "bandit -f json --quiet  --confidence-level high --severity-level high --recursive  ."
+                                    ],
+                                    "stdout_text": "{\n  \"errors\": [],\n  \"generated_at\": \"2025-02-07T14:52:52Z\",\n  \"metrics\": {\n    \"./docs/source/conf.py\": {\n      \"CONFIDENCE.HIGH\": 0,\n      \"CONFIDENCE.LOW\": 0,\n      \"CONFIDENCE.MEDIUM\": 0,\n      \"CONFIDENCE.UNDEFINED\": 0,\n      \"SEVERITY.HIGH\": 0,\n      \"SEVERITY.LOW\": 0,\n      \"SEVERITY.MEDIUM\": 0,\n      \"SEVERITY.UNDEFINED\": 0,\n      \"loc\": 8,\n      \"nosec\": 0,\n      \"skipped_tests\": 0\n    },\n    \"./raster2stac/__init__.py\": {\n      \"CONFIDENCE.HIGH\": 0,\n      \"CONFIDENCE.LOW\": 0,\n      \"CONFIDENCE.MEDIUM\": 0,\n      \"CONFIDENCE.UNDEFINED\": 0,\n      \"SEVERITY.HIGH\": 0,\n      \"SEVERITY.LOW\": 0,\n      \"SEVERITY.MEDIUM\": 0,\n      \"SEVERITY.UNDEFINED\": 0,\n      \"loc\": 9,\n      \"nosec\": 0,\n      \"skipped_tests\": 0\n    },\n    \"./raster2stac/_version.py\": {\n      \"CONFIDENCE.HIGH\": 0,\n      \"CONFIDENCE.LOW\": 0,\n      \"CONFIDENCE.MEDIUM\": 0,\n      \"CONFIDENCE.UNDEFINED\": 0,\n      \"SEVERITY.HIGH\": 0,\n      \"SEVERITY.LOW\": 0,\n      \"SEVERITY.MEDIUM\": 0,\n      \"SEVERITY.UNDEFINED\": 0,\n      \"loc\": 1,\n      \"nosec\": 0,\n      \"skipped_tests\": 0\n    },\n    \"./raster2stac/raster2stac.py\": {\n      \"CONFIDENCE.HIGH\": 0,\n      \"CONFIDENCE.LOW\": 0,\n      \"CONFIDENCE.MEDIUM\": 0,\n      \"CONFIDENCE.UNDEFINED\": 0,\n      \"SEVERITY.HIGH\": 0,\n      \"SEVERITY.LOW\": 0,\n      \"SEVERITY.MEDIUM\": 0,\n      \"SEVERITY.UNDEFINED\": 0,\n      \"loc\": 841,\n      \"nosec\": 0,\n      \"skipped_tests\": 0\n    },\n    \"./raster2stac/rioxarray_stac.py\": {\n      \"CONFIDENCE.HIGH\": 0,\n      \"CONFIDENCE.LOW\": 0,\n      \"CONFIDENCE.MEDIUM\": 0,\n      \"CONFIDENCE.UNDEFINED\": 0,\n      \"SEVERITY.HIGH\": 0,\n      \"SEVERITY.LOW\": 0,\n      \"SEVERITY.MEDIUM\": 0,\n      \"SEVERITY.UNDEFINED\": 0,\n      \"loc\": 358,\n      \"nosec\": 0,\n      \"skipped_tests\": 0\n    },\n    \"./setup.py\": {\n      \"CONFIDENCE.HIGH\": 0,\n      \"CONFIDENCE.LOW\": 0,\n      \"CONFIDENCE.MEDIUM\": 0,\n      \"CONFIDENCE.UNDEFINED\": 0,\n      \"SEVERITY.HIGH\": 0,\n      \"SEVERITY.LOW\": 0,\n      \"SEVERITY.MEDIUM\": 0,\n      \"SEVERITY.UNDEFINED\": 0,\n      \"loc\": 2,\n      \"nosec\": 0,\n      \"skipped_tests\": 0\n    },\n    \"./tests/__init__.py\": {\n      \"CONFIDENCE.HIGH\": 0,\n      \"CONFIDENCE.LOW\": 0,\n      \"CONFIDENCE.MEDIUM\": 0,\n      \"CONFIDENCE.UNDEFINED\": 0,\n      \"SEVERITY.HIGH\": 0,\n      \"SEVERITY.LOW\": 0,\n      \"SEVERITY.MEDIUM\": 0,\n      \"SEVERITY.UNDEFINED\": 0,\n      \"loc\": 0,\n      \"nosec\": 0,\n      \"skipped_tests\": 0\n    },\n    \"./tests/raster2stac_test.py\": {\n      \"CONFIDENCE.HIGH\": 13,\n      \"CONFIDENCE.LOW\": 0,\n      \"CONFIDENCE.MEDIUM\": 0,\n      \"CONFIDENCE.UNDEFINED\": 0,\n      \"SEVERITY.HIGH\": 0,\n      \"SEVERITY.LOW\": 13,\n      \"SEVERITY.MEDIUM\": 0,\n      \"SEVERITY.UNDEFINED\": 0,\n      \"loc\": 273,\n      \"nosec\": 0,\n      \"skipped_tests\": 0\n    },\n    \"./tests/rioxarray_stac_test.py\": {\n      \"CONFIDENCE.HIGH\": 11,\n      \"CONFIDENCE.LOW\": 0,\n      \"CONFIDENCE.MEDIUM\": 0,\n      \"CONFIDENCE.UNDEFINED\": 0,\n      \"SEVERITY.HIGH\": 0,\n      \"SEVERITY.LOW\": 11,\n      \"SEVERITY.MEDIUM\": 0,\n      \"SEVERITY.UNDEFINED\": 0,\n      \"loc\": 74,\n      \"nosec\": 0,\n      \"skipped_tests\": 0\n    },\n    \"_totals\": {\n      \"CONFIDENCE.HIGH\": 24,\n      \"CONFIDENCE.LOW\": 0,\n      \"CONFIDENCE.MEDIUM\": 0,\n      \"CONFIDENCE.UNDEFINED\": 0,\n      \"SEVERITY.HIGH\": 0,\n      \"SEVERITY.LOW\": 24,\n      \"SEVERITY.MEDIUM\": 0,\n      \"SEVERITY.UNDEFINED\": 0,\n      \"loc\": 1566,\n      \"nosec\": 0,\n      \"skipped_tests\": 0\n    }\n  },\n  \"results\": []\n}",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/raster-to-stac.assess.sqaaas/job/main/1/execution/node/88/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/raster-to-stac.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "errors": [],
+                                "generated_at": "2025-02-07T14:52:52Z",
+                                "metrics": {
+                                    "./docs/source/conf.py": {
+                                        "CONFIDENCE.HIGH": 0,
+                                        "CONFIDENCE.LOW": 0,
+                                        "CONFIDENCE.MEDIUM": 0,
+                                        "CONFIDENCE.UNDEFINED": 0,
+                                        "SEVERITY.HIGH": 0,
+                                        "SEVERITY.LOW": 0,
+                                        "SEVERITY.MEDIUM": 0,
+                                        "SEVERITY.UNDEFINED": 0,
+                                        "loc": 8,
+                                        "nosec": 0,
+                                        "skipped_tests": 0
+                                    },
+                                    "./raster2stac/__init__.py": {
+                                        "CONFIDENCE.HIGH": 0,
+                                        "CONFIDENCE.LOW": 0,
+                                        "CONFIDENCE.MEDIUM": 0,
+                                        "CONFIDENCE.UNDEFINED": 0,
+                                        "SEVERITY.HIGH": 0,
+                                        "SEVERITY.LOW": 0,
+                                        "SEVERITY.MEDIUM": 0,
+                                        "SEVERITY.UNDEFINED": 0,
+                                        "loc": 9,
+                                        "nosec": 0,
+                                        "skipped_tests": 0
+                                    },
+                                    "./raster2stac/_version.py": {
+                                        "CONFIDENCE.HIGH": 0,
+                                        "CONFIDENCE.LOW": 0,
+                                        "CONFIDENCE.MEDIUM": 0,
+                                        "CONFIDENCE.UNDEFINED": 0,
+                                        "SEVERITY.HIGH": 0,
+                                        "SEVERITY.LOW": 0,
+                                        "SEVERITY.MEDIUM": 0,
+                                        "SEVERITY.UNDEFINED": 0,
+                                        "loc": 1,
+                                        "nosec": 0,
+                                        "skipped_tests": 0
+                                    },
+                                    "./raster2stac/raster2stac.py": {
+                                        "CONFIDENCE.HIGH": 0,
+                                        "CONFIDENCE.LOW": 0,
+                                        "CONFIDENCE.MEDIUM": 0,
+                                        "CONFIDENCE.UNDEFINED": 0,
+                                        "SEVERITY.HIGH": 0,
+                                        "SEVERITY.LOW": 0,
+                                        "SEVERITY.MEDIUM": 0,
+                                        "SEVERITY.UNDEFINED": 0,
+                                        "loc": 841,
+                                        "nosec": 0,
+                                        "skipped_tests": 0
+                                    },
+                                    "./raster2stac/rioxarray_stac.py": {
+                                        "CONFIDENCE.HIGH": 0,
+                                        "CONFIDENCE.LOW": 0,
+                                        "CONFIDENCE.MEDIUM": 0,
+                                        "CONFIDENCE.UNDEFINED": 0,
+                                        "SEVERITY.HIGH": 0,
+                                        "SEVERITY.LOW": 0,
+                                        "SEVERITY.MEDIUM": 0,
+                                        "SEVERITY.UNDEFINED": 0,
+                                        "loc": 358,
+                                        "nosec": 0,
+                                        "skipped_tests": 0
+                                    },
+                                    "./setup.py": {
+                                        "CONFIDENCE.HIGH": 0,
+                                        "CONFIDENCE.LOW": 0,
+                                        "CONFIDENCE.MEDIUM": 0,
+                                        "CONFIDENCE.UNDEFINED": 0,
+                                        "SEVERITY.HIGH": 0,
+                                        "SEVERITY.LOW": 0,
+                                        "SEVERITY.MEDIUM": 0,
+                                        "SEVERITY.UNDEFINED": 0,
+                                        "loc": 2,
+                                        "nosec": 0,
+                                        "skipped_tests": 0
+                                    },
+                                    "./tests/__init__.py": {
+                                        "CONFIDENCE.HIGH": 0,
+                                        "CONFIDENCE.LOW": 0,
+                                        "CONFIDENCE.MEDIUM": 0,
+                                        "CONFIDENCE.UNDEFINED": 0,
+                                        "SEVERITY.HIGH": 0,
+                                        "SEVERITY.LOW": 0,
+                                        "SEVERITY.MEDIUM": 0,
+                                        "SEVERITY.UNDEFINED": 0,
+                                        "loc": 0,
+                                        "nosec": 0,
+                                        "skipped_tests": 0
+                                    },
+                                    "./tests/raster2stac_test.py": {
+                                        "CONFIDENCE.HIGH": 13,
+                                        "CONFIDENCE.LOW": 0,
+                                        "CONFIDENCE.MEDIUM": 0,
+                                        "CONFIDENCE.UNDEFINED": 0,
+                                        "SEVERITY.HIGH": 0,
+                                        "SEVERITY.LOW": 13,
+                                        "SEVERITY.MEDIUM": 0,
+                                        "SEVERITY.UNDEFINED": 0,
+                                        "loc": 273,
+                                        "nosec": 0,
+                                        "skipped_tests": 0
+                                    },
+                                    "./tests/rioxarray_stac_test.py": {
+                                        "CONFIDENCE.HIGH": 11,
+                                        "CONFIDENCE.LOW": 0,
+                                        "CONFIDENCE.MEDIUM": 0,
+                                        "CONFIDENCE.UNDEFINED": 0,
+                                        "SEVERITY.HIGH": 0,
+                                        "SEVERITY.LOW": 11,
+                                        "SEVERITY.MEDIUM": 0,
+                                        "SEVERITY.UNDEFINED": 0,
+                                        "loc": 74,
+                                        "nosec": 0,
+                                        "skipped_tests": 0
+                                    },
+                                    "_totals": {
+                                        "CONFIDENCE.HIGH": 24,
+                                        "CONFIDENCE.LOW": 0,
+                                        "CONFIDENCE.MEDIUM": 0,
+                                        "CONFIDENCE.UNDEFINED": 0,
+                                        "SEVERITY.HIGH": 0,
+                                        "SEVERITY.LOW": 24,
+                                        "SEVERITY.MEDIUM": 0,
+                                        "SEVERITY.UNDEFINED": 0,
+                                        "loc": 1566,
+                                        "nosec": 0,
+                                        "skipped_tests": 0
+                                    }
+                                },
+                                "results": []
+                            }
+                        }
+                    ],
+                    "valid": true
+                }
+            },
+            "coverage": {
+                "percentage": 100,
+                "total_subcriteria": 1,
+                "success_subcriteria": 1
+            }
+        },
+        "QC.Sty": {
+            "valid": false,
+            "subcriteria": {
+                "QC.Sty01": {
+                    "description": "Is the software product following a style standard for Python files?",
+                    "requirement_level": "MUST",
+                    "hint": "Please check & solve the security weaknesses found by the linter tool",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "Python files are not fully compliant with flake8 (pycodestyle, pyflakes, mccabe) standard",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-flake8",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "flake8",
+                                "lang": "Python",
+                                "version": "4.0.1 (mccabe: 0.6.1, pycodestyle: 2.8.0, pyflakes: 2.4.0)",
+                                "docker": {
+                                    "image": "pipelinecomponents/flake8:0.9.0",
+                                    "reviewed": "2022-03-04"
+                                },
+                                "ci": {
+                                    "name": "QC.Sty gitlab.inf.unibz.it/earth_observation_public/raster-to-stac flake8",
+                                    "status": "FAILED",
+                                    "stdout_command": [
+                                        "flake8 ."
+                                    ],
+                                    "stdout_text": "./tests/raster2stac_test.py:57:80: E501 line too long (87 > 79 characters)\n./tests/raster2stac_test.py:86:80: E501 line too long (83 > 79 characters)\n./tests/raster2stac_test.py:93:80: E501 line too long (85 > 79 characters)\n./tests/raster2stac_test.py:114:80: E501 line too long (91 > 79 characters)\n./tests/raster2stac_test.py:123:80: E501 line too long (81 > 79 characters)\n./tests/raster2stac_test.py:136:80: E501 line too long (85 > 79 characters)\n./tests/raster2stac_test.py:140:80: E501 line too long (88 > 79 characters)\n./tests/raster2stac_test.py:161:80: E501 line too long (103 > 79 characters)\n./tests/raster2stac_test.py:164:80: E501 line too long (157 > 79 characters)\n./tests/raster2stac_test.py:183:80: E501 line too long (181 > 79 characters)\n./tests/raster2stac_test.py:210:80: E501 line too long (83 > 79 characters)\n./tests/raster2stac_test.py:211:80: E501 line too long (150 > 79 characters)\n./tests/raster2stac_test.py:240:80: E501 line too long (106 > 79 characters)\n./tests/raster2stac_test.py:243:80: E501 line too long (161 > 79 characters)\n./tests/raster2stac_test.py:262:80: E501 line too long (185 > 79 characters)\n./tests/raster2stac_test.py:267:80: E501 line too long (81 > 79 characters)\n./tests/rioxarray_stac_test.py:31:80: E501 line too long (87 > 79 characters)\n./tests/rioxarray_stac_test.py:66:80: E501 line too long (84 > 79 characters)\n./tests/rioxarray_stac_test.py:86:80: E501 line too long (86 > 79 characters)\n./raster2stac/__init__.py:5:1: F401 'raster2stac.raster2stac.Raster2STAC' imported but unused\n./raster2stac/rioxarray_stac.py:4:80: E501 line too long (84 > 79 characters)\n./raster2stac/rioxarray_stac.py:5:80: E501 line too long (103 > 79 characters)\n./raster2stac/rioxarray_stac.py:70:80: E501 line too long (88 > 79 characters)\n./raster2stac/rioxarray_stac.py:71:80: E501 line too long (88 > 79 characters)\n./raster2stac/rioxarray_stac.py:85:80: E501 line too long (102 > 79 characters)\n./raster2stac/rioxarray_stac.py:98:80: E501 line too long (109 > 79 characters)\n./raster2stac/rioxarray_stac.py:104:80: E501 line too long (113 > 79 characters)\n./raster2stac/rioxarray_stac.py:115:80: E501 line too long (82 > 79 characters)\n./raster2stac/rioxarray_stac.py:187:80: E501 line too long (85 > 79 characters)\n./raster2stac/rioxarray_stac.py:226:40: E231 missing whitespace after ','\n./raster2stac/rioxarray_stac.py:238:38: E231 missing whitespace after ','\n./raster2stac/rioxarray_stac.py:329:80: E501 line too long (80 > 79 characters)\n./raster2stac/rioxarray_stac.py:330:80: E501 line too long (88 > 79 characters)\n./raster2stac/rioxarray_stac.py:335:80: E501 line too long (86 > 79 characters)\n./raster2stac/rioxarray_stac.py:336:80: E501 line too long (103 > 79 characters)\n./raster2stac/rioxarray_stac.py:338:80: E501 line too long (81 > 79 characters)\n./raster2stac/rioxarray_stac.py:339:80: E501 line too long (81 > 79 characters)\n./raster2stac/rioxarray_stac.py:341:80: E501 line too long (91 > 79 characters)\n./raster2stac/rioxarray_stac.py:342:80: E501 line too long (89 > 79 characters)\n./raster2stac/rioxarray_stac.py:343:80: E501 line too long (81 > 79 characters)\n./raster2stac/rioxarray_stac.py:344:80: E501 line too long (106 > 79 characters)\n./raster2stac/rioxarray_stac.py:345:80: E501 line too long (136 > 79 characters)\n./raster2stac/rioxarray_stac.py:346:80: E501 line too long (102 > 79 characters)\n./raster2stac/rioxarray_stac.py:380:80: E501 line too long (87 > 79 characters)\n./raster2stac/rioxarray_stac.py:383:80: E501 line too long (83 > 79 characters)\n./raster2stac/rioxarray_stac.py:384:80: E501 line too long (113 > 79 characters)\n./raster2stac/rioxarray_stac.py:395:80: E501 line too long (101 > 79 characters)\n./raster2stac/rioxarray_stac.py:401:80: E501 line too long (85 > 79 characters)\n./raster2stac/rioxarray_stac.py:409:80: E501 line too long (93 > 79 characters)\n./raster2stac/rioxarray_stac.py:421:80: E501 line too long (85 > 79 characters)\n./raster2stac/raster2stac.py:4:80: E501 line too long (108 > 79 characters)\n./raster2stac/raster2stac.py:5:80: E501 line too long (100 > 79 characters)\n./raster2stac/raster2stac.py:7:80: E501 line too long (89 > 79 characters)\n./raster2stac/raster2stac.py:8:80: E501 line too long (86 > 79 characters)\n./raster2stac/raster2stac.py:65:80: E501 line too long (80 > 79 characters)\n./raster2stac/raster2stac.py:67:80: E501 line too long (82 > 79 characters)\n./raster2stac/raster2stac.py:69:80: E501 line too long (98 > 79 characters)\n./raster2stac/raster2stac.py:71:80: E501 line too long (107 > 79 characters)\n./raster2stac/raster2stac.py:73:80: E501 line too long (114 > 79 characters)\n./raster2stac/raster2stac.py:80:80: E501 line too long (90 > 79 characters)\n./raster2stac/raster2stac.py:90:80: E501 line too long (102 > 79 characters)\n./raster2stac/raster2stac.py:148:80: E501 line too long (84 > 79 characters)\n./raster2stac/raster2stac.py:159:80: E501 line too long (97 > 79 characters)\n./raster2stac/raster2stac.py:160:80: E501 line too long (89 > 79 characters)\n./raster2stac/raster2stac.py:161:80: E501 line too long (81 > 79 characters)\n./raster2stac/raster2stac.py:167:80: E501 line too long (87 > 79 characters)\n./raster2stac/raster2stac.py:193:80: E501 line too long (92 > 79 characters)\n./raster2stac/raster2stac.py:203:80: E501 line too long (126 > 79 characters)\n./raster2stac/raster2stac.py:211:80: E501 line too long (84 > 79 characters)\n./raster2stac/raster2stac.py:213:80: E501 line too long (95 > 79 characters)\n./raster2stac/raster2stac.py:217:80: E501 line too long (105 > 79 characters)\n./raster2stac/raster2stac.py:220:80: E501 line too long (85 > 79 characters)\n./raster2stac/raster2stac.py:225:80: E501 line too long (85 > 79 characters)\n./raster2stac/raster2stac.py:235:80: E501 line too long (84 > 79 characters)\n./raster2stac/raster2stac.py:256:80: E501 line too long (100 > 79 characters)\n./raster2stac/raster2stac.py:294:80: E501 line too long (87 > 79 characters)\n./raster2stac/raster2stac.py:295:80: E501 line too long (153 > 79 characters)\n./raster2stac/raster2stac.py:302:80: E501 line too long (172 > 79 characters)\n./raster2stac/raster2stac.py:348:80: E501 line too long (111 > 79 characters)\n./raster2stac/raster2stac.py:350:80: E501 line too long (121 > 79 characters)\n./raster2stac/raster2stac.py:353:80: E501 line too long (146 > 79 characters)\n./raster2stac/raster2stac.py:355:80: E501 line too long (100 > 79 characters)\n./raster2stac/raster2stac.py:362:80: E501 line too long (86 > 79 characters)\n./raster2stac/raster2stac.py:363:80: E501 line too long (82 > 79 characters)\n./raster2stac/raster2stac.py:366:80: E501 line too long (106 > 79 characters)\n./raster2stac/raster2stac.py:369:80: E501 line too long (122 > 79 characters)\n./raster2stac/raster2stac.py:378:80: E501 line too long (85 > 79 characters)\n./raster2stac/raster2stac.py:396:80: E501 line too long (143 > 79 characters)\n./raster2stac/raster2stac.py:399:80: E501 line too long (174 > 79 characters)\n./raster2stac/raster2stac.py:438:80: E501 line too long (81 > 79 characters)\n./raster2stac/raster2stac.py:454:80: E501 line too long (93 > 79 characters)\n./raster2stac/raster2stac.py:479:80: E501 line too long (86 > 79 characters)\n./raster2stac/raster2stac.py:487:80: E501 line too long (86 > 79 characters)\n./raster2stac/raster2stac.py:495:80: E501 line too long (96 > 79 characters)\n./raster2stac/raster2stac.py:502:80: E501 line too long (112 > 79 characters)\n./raster2stac/raster2stac.py:508:80: E501 line too long (89 > 79 characters)\n./raster2stac/raster2stac.py:515:80: E501 line too long (80 > 79 characters)\n./raster2stac/raster2stac.py:571:80: E501 line too long (81 > 79 characters)\n./raster2stac/raster2stac.py:588:80: E501 line too long (87 > 79 characters)\n./raster2stac/raster2stac.py:597:80: E501 line too long (87 > 79 characters)\n./raster2stac/raster2stac.py:624:80: E501 line too long (88 > 79 characters)\n./raster2stac/raster2stac.py:633:80: E501 line too long (91 > 79 characters)\n./raster2stac/raster2stac.py:642:80: E501 line too long (82 > 79 characters)\n./raster2stac/raster2stac.py:653:80: E501 line too long (91 > 79 characters)\n./raster2stac/raster2stac.py:690:80: E501 line too long (86 > 79 characters)\n./raster2stac/raster2stac.py:702:80: E501 line too long (139 > 79 characters)\n./raster2stac/raster2stac.py:719:80: E501 line too long (97 > 79 characters)\n./raster2stac/raster2stac.py:729:80: E501 line too long (172 > 79 characters)\n./raster2stac/raster2stac.py:760:80: E501 line too long (87 > 79 characters)\n./raster2stac/raster2stac.py:769:80: E501 line too long (85 > 79 characters)\n./raster2stac/raster2stac.py:788:80: E501 line too long (80 > 79 characters)\n./raster2stac/raster2stac.py:803:80: E501 line too long (117 > 79 characters)\n./raster2stac/raster2stac.py:807:80: E501 line too long (156 > 79 characters)\n./raster2stac/raster2stac.py:840:80: E501 line too long (88 > 79 characters)\n./raster2stac/raster2stac.py:843:80: E501 line too long (111 > 79 characters)\n./raster2stac/raster2stac.py:845:80: E501 line too long (83 > 79 characters)\n./raster2stac/raster2stac.py:895:80: E501 line too long (86 > 79 characters)\n./raster2stac/raster2stac.py:903:80: E501 line too long (86 > 79 characters)\n./raster2stac/raster2stac.py:911:80: E501 line too long (102 > 79 characters)\n./raster2stac/raster2stac.py:918:80: E501 line too long (112 > 79 characters)\n./raster2stac/raster2stac.py:924:80: E501 line too long (89 > 79 characters)\n./raster2stac/raster2stac.py:931:80: E501 line too long (80 > 79 characters)\n./raster2stac/raster2stac.py:989:80: E501 line too long (81 > 79 characters)\n./raster2stac/raster2stac.py:1006:80: E501 line too long (85 > 79 characters)\n./raster2stac/raster2stac.py:1015:80: E501 line too long (85 > 79 characters)\n./raster2stac/raster2stac.py:1050:80: E501 line too long (88 > 79 characters)\n./raster2stac/raster2stac.py:1059:80: E501 line too long (91 > 79 characters)\n./raster2stac/raster2stac.py:1068:80: E501 line too long (82 > 79 characters)\n./raster2stac/raster2stac.py:1079:80: E501 line too long (91 > 79 characters)\n./raster2stac/raster2stac.py:1116:80: E501 line too long (86 > 79 characters)\n./raster2stac/raster2stac.py:1128:80: E501 line too long (139 > 79 characters)",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/raster-to-stac.assess.sqaaas/job/main/1/execution/node/97/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/raster-to-stac.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": "./tests/raster2stac_test.py:57:80: E501 line too long (87 > 79 characters)\n./tests/raster2stac_test.py:86:80: E501 line too long (83 > 79 characters)\n./tests/raster2stac_test.py:93:80: E501 line too long (85 > 79 characters)\n./tests/raster2stac_test.py:114:80: E501 line too long (91 > 79 characters)\n./tests/raster2stac_test.py:123:80: E501 line too long (81 > 79 characters)\n./tests/raster2stac_test.py:136:80: E501 line too long (85 > 79 characters)\n./tests/raster2stac_test.py:140:80: E501 line too long (88 > 79 characters)\n./tests/raster2stac_test.py:161:80: E501 line too long (103 > 79 characters)\n./tests/raster2stac_test.py:164:80: E501 line too long (157 > 79 characters)\n./tests/raster2stac_test.py:183:80: E501 line too long (181 > 79 characters)\n./tests/raster2stac_test.py:210:80: E501 line too long (83 > 79 characters)\n./tests/raster2stac_test.py:211:80: E501 line too long (150 > 79 characters)\n./tests/raster2stac_test.py:240:80: E501 line too long (106 > 79 characters)\n./tests/raster2stac_test.py:243:80: E501 line too long (161 > 79 characters)\n./tests/raster2stac_test.py:262:80: E501 line too long (185 > 79 characters)\n./tests/raster2stac_test.py:267:80: E501 line too long (81 > 79 characters)\n./tests/rioxarray_stac_test.py:31:80: E501 line too long (87 > 79 characters)\n./tests/rioxarray_stac_test.py:66:80: E501 line too long (84 > 79 characters)\n./tests/rioxarray_stac_test.py:86:80: E501 line too long (86 > 79 characters)\n./raster2stac/__init__.py:5:1: F401 'raster2stac.raster2stac.Raster2STAC' imported but unused\n./raster2stac/rioxarray_stac.py:4:80: E501 line too long (84 > 79 characters)\n./raster2stac/rioxarray_stac.py:5:80: E501 line too long (103 > 79 characters)\n./raster2stac/rioxarray_stac.py:70:80: E501 line too long (88 > 79 characters)\n./raster2stac/rioxarray_stac.py:71:80: E501 line too long (88 > 79 characters)\n./raster2stac/rioxarray_stac.py:85:80: E501 line too long (102 > 79 characters)\n./raster2stac/rioxarray_stac.py:98:80: E501 line too long (109 > 79 characters)\n./raster2stac/rioxarray_stac.py:104:80: E501 line too long (113 > 79 characters)\n./raster2stac/rioxarray_stac.py:115:80: E501 line too long (82 > 79 characters)\n./raster2stac/rioxarray_stac.py:187:80: E501 line too long (85 > 79 characters)\n./raster2stac/rioxarray_stac.py:226:40: E231 missing whitespace after ','\n./raster2stac/rioxarray_stac.py:238:38: E231 missing whitespace after ','\n./raster2stac/rioxarray_stac.py:329:80: E501 line too long (80 > 79 characters)\n./raster2stac/rioxarray_stac.py:330:80: E501 line too long (88 > 79 characters)\n./raster2stac/rioxarray_stac.py:335:80: E501 line too long (86 > 79 characters)\n./raster2stac/rioxarray_stac.py:336:80: E501 line too long (103 > 79 characters)\n./raster2stac/rioxarray_stac.py:338:80: E501 line too long (81 > 79 characters)\n./raster2stac/rioxarray_stac.py:339:80: E501 line too long (81 > 79 characters)\n./raster2stac/rioxarray_stac.py:341:80: E501 line too long (91 > 79 characters)\n./raster2stac/rioxarray_stac.py:342:80: E501 line too long (89 > 79 characters)\n./raster2stac/rioxarray_stac.py:343:80: E501 line too long (81 > 79 characters)\n./raster2stac/rioxarray_stac.py:344:80: E501 line too long (106 > 79 characters)\n./raster2stac/rioxarray_stac.py:345:80: E501 line too long (136 > 79 characters)\n./raster2stac/rioxarray_stac.py:346:80: E501 line too long (102 > 79 characters)\n./raster2stac/rioxarray_stac.py:380:80: E501 line too long (87 > 79 characters)\n./raster2stac/rioxarray_stac.py:383:80: E501 line too long (83 > 79 characters)\n./raster2stac/rioxarray_stac.py:384:80: E501 line too long (113 > 79 characters)\n./raster2stac/rioxarray_stac.py:395:80: E501 line too long (101 > 79 characters)\n./raster2stac/rioxarray_stac.py:401:80: E501 line too long (85 > 79 characters)\n./raster2stac/rioxarray_stac.py:409:80: E501 line too long (93 > 79 characters)\n./raster2stac/rioxarray_stac.py:421:80: E501 line too long (85 > 79 characters)\n./raster2stac/raster2stac.py:4:80: E501 line too long (108 > 79 characters)\n./raster2stac/raster2stac.py:5:80: E501 line too long (100 > 79 characters)\n./raster2stac/raster2stac.py:7:80: E501 line too long (89 > 79 characters)\n./raster2stac/raster2stac.py:8:80: E501 line too long (86 > 79 characters)\n./raster2stac/raster2stac.py:65:80: E501 line too long (80 > 79 characters)\n./raster2stac/raster2stac.py:67:80: E501 line too long (82 > 79 characters)\n./raster2stac/raster2stac.py:69:80: E501 line too long (98 > 79 characters)\n./raster2stac/raster2stac.py:71:80: E501 line too long (107 > 79 characters)\n./raster2stac/raster2stac.py:73:80: E501 line too long (114 > 79 characters)\n./raster2stac/raster2stac.py:80:80: E501 line too long (90 > 79 characters)\n./raster2stac/raster2stac.py:90:80: E501 line too long (102 > 79 characters)\n./raster2stac/raster2stac.py:148:80: E501 line too long (84 > 79 characters)\n./raster2stac/raster2stac.py:159:80: E501 line too long (97 > 79 characters)\n./raster2stac/raster2stac.py:160:80: E501 line too long (89 > 79 characters)\n./raster2stac/raster2stac.py:161:80: E501 line too long (81 > 79 characters)\n./raster2stac/raster2stac.py:167:80: E501 line too long (87 > 79 characters)\n./raster2stac/raster2stac.py:193:80: E501 line too long (92 > 79 characters)\n./raster2stac/raster2stac.py:203:80: E501 line too long (126 > 79 characters)\n./raster2stac/raster2stac.py:211:80: E501 line too long (84 > 79 characters)\n./raster2stac/raster2stac.py:213:80: E501 line too long (95 > 79 characters)\n./raster2stac/raster2stac.py:217:80: E501 line too long (105 > 79 characters)\n./raster2stac/raster2stac.py:220:80: E501 line too long (85 > 79 characters)\n./raster2stac/raster2stac.py:225:80: E501 line too long (85 > 79 characters)\n./raster2stac/raster2stac.py:235:80: E501 line too long (84 > 79 characters)\n./raster2stac/raster2stac.py:256:80: E501 line too long (100 > 79 characters)\n./raster2stac/raster2stac.py:294:80: E501 line too long (87 > 79 characters)\n./raster2stac/raster2stac.py:295:80: E501 line too long (153 > 79 characters)\n./raster2stac/raster2stac.py:302:80: E501 line too long (172 > 79 characters)\n./raster2stac/raster2stac.py:348:80: E501 line too long (111 > 79 characters)\n./raster2stac/raster2stac.py:350:80: E501 line too long (121 > 79 characters)\n./raster2stac/raster2stac.py:353:80: E501 line too long (146 > 79 characters)\n./raster2stac/raster2stac.py:355:80: E501 line too long (100 > 79 characters)\n./raster2stac/raster2stac.py:362:80: E501 line too long (86 > 79 characters)\n./raster2stac/raster2stac.py:363:80: E501 line too long (82 > 79 characters)\n./raster2stac/raster2stac.py:366:80: E501 line too long (106 > 79 characters)\n./raster2stac/raster2stac.py:369:80: E501 line too long (122 > 79 characters)\n./raster2stac/raster2stac.py:378:80: E501 line too long (85 > 79 characters)\n./raster2stac/raster2stac.py:396:80: E501 line too long (143 > 79 characters)\n./raster2stac/raster2stac.py:399:80: E501 line too long (174 > 79 characters)\n./raster2stac/raster2stac.py:438:80: E501 line too long (81 > 79 characters)\n./raster2stac/raster2stac.py:454:80: E501 line too long (93 > 79 characters)\n./raster2stac/raster2stac.py:479:80: E501 line too long (86 > 79 characters)\n./raster2stac/raster2stac.py:487:80: E501 line too long (86 > 79 characters)\n./raster2stac/raster2stac.py:495:80: E501 line too long (96 > 79 characters)\n./raster2stac/raster2stac.py:502:80: E501 line too long (112 > 79 characters)\n./raster2stac/raster2stac.py:508:80: E501 line too long (89 > 79 characters)\n./raster2stac/raster2stac.py:515:80: E501 line too long (80 > 79 characters)\n./raster2stac/raster2stac.py:571:80: E501 line too long (81 > 79 characters)\n./raster2stac/raster2stac.py:588:80: E501 line too long (87 > 79 characters)\n./raster2stac/raster2stac.py:597:80: E501 line too long (87 > 79 characters)\n./raster2stac/raster2stac.py:624:80: E501 line too long (88 > 79 characters)\n./raster2stac/raster2stac.py:633:80: E501 line too long (91 > 79 characters)\n./raster2stac/raster2stac.py:642:80: E501 line too long (82 > 79 characters)\n./raster2stac/raster2stac.py:653:80: E501 line too long (91 > 79 characters)\n./raster2stac/raster2stac.py:690:80: E501 line too long (86 > 79 characters)\n./raster2stac/raster2stac.py:702:80: E501 line too long (139 > 79 characters)\n./raster2stac/raster2stac.py:719:80: E501 line too long (97 > 79 characters)\n./raster2stac/raster2stac.py:729:80: E501 line too long (172 > 79 characters)\n./raster2stac/raster2stac.py:760:80: E501 line too long (87 > 79 characters)\n./raster2stac/raster2stac.py:769:80: E501 line too long (85 > 79 characters)\n./raster2stac/raster2stac.py:788:80: E501 line too long (80 > 79 characters)\n./raster2stac/raster2stac.py:803:80: E501 line too long (117 > 79 characters)\n./raster2stac/raster2stac.py:807:80: E501 line too long (156 > 79 characters)\n./raster2stac/raster2stac.py:840:80: E501 line too long (88 > 79 characters)\n./raster2stac/raster2stac.py:843:80: E501 line too long (111 > 79 characters)\n./raster2stac/raster2stac.py:845:80: E501 line too long (83 > 79 characters)\n./raster2stac/raster2stac.py:895:80: E501 line too long (86 > 79 characters)\n./raster2stac/raster2stac.py:903:80: E501 line too long (86 > 79 characters)\n./raster2stac/raster2stac.py:911:80: E501 line too long (102 > 79 characters)\n./raster2stac/raster2stac.py:918:80: E501 line too long (112 > 79 characters)\n./raster2stac/raster2stac.py:924:80: E501 line too long (89 > 79 characters)\n./raster2stac/raster2stac.py:931:80: E501 line too long (80 > 79 characters)\n./raster2stac/raster2stac.py:989:80: E501 line too long (81 > 79 characters)\n./raster2stac/raster2stac.py:1006:80: E501 line too long (85 > 79 characters)\n./raster2stac/raster2stac.py:1015:80: E501 line too long (85 > 79 characters)\n./raster2stac/raster2stac.py:1050:80: E501 line too long (88 > 79 characters)\n./raster2stac/raster2stac.py:1059:80: E501 line too long (91 > 79 characters)\n./raster2stac/raster2stac.py:1068:80: E501 line too long (82 > 79 characters)\n./raster2stac/raster2stac.py:1079:80: E501 line too long (91 > 79 characters)\n./raster2stac/raster2stac.py:1116:80: E501 line too long (86 > 79 characters)\n./raster2stac/raster2stac.py:1128:80: E501 line too long (139 > 79 characters)"
+                        },
+                        {
+                            "valid": true,
+                            "message": "JSON files are compliant with jsonlint standard",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-jenkins_exit_status",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "jsonlint",
+                                "lang": "JSON",
+                                "version": "1.6.3",
+                                "docker": {
+                                    "dockerfile": "QC.Sty/jsonlint/Dockerfile",
+                                    "reviewed": "2021-11-23"
+                                },
+                                "ci": {
+                                    "name": "QC.Sty gitlab.inf.unibz.it/earth_observation_public/raster-to-stac jsonlint",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "jsonlint-cli \"**/*.json\""
+                                    ],
+                                    "stdout_text": "",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/raster-to-stac.assess.sqaaas/job/main/1/execution/node/106/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/raster-to-stac.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {}
+                        }
+                    ],
+                    "valid": false,
+                    "required_for_next_level_badge": false
+                }
+            },
+            "coverage": {
+                "percentage": 0,
+                "total_subcriteria": 1,
+                "success_subcriteria": 0
+            }
+        },
+        "QC.Uni": {
+            "valid": false,
+            "subcriteria": {
+                "QC.Uni01": {
+                    "description": "Are the tests passing through an automated means?",
+                    "requirement_level": "MUST",
+                    "hint": "Please check & solve the failing test cases found by the {tool_name} tool",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "Test cases are not passing using None testing framework",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-jenkins_exit_status",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "pytest",
+                                "lang": "Python",
+                                "version": "7.1.3",
+                                "docker": {
+                                    "image": "eoscsynergy/sqaaas-pytest:7.1.3-alpha",
+                                    "reviewed": "2023-08-09"
+                                },
+                                "ci": {
+                                    "name": "QC.Uni gitlab.inf.unibz.it/earth_observation_public/raster-to-stac pytest",
+                                    "status": "FAILED",
+                                    "stdout_command": [
+                                        "pytest  --json-report  --json-report-indent 4"
+                                    ],
+                                    "stdout_text": "============================= test session starts ==============================\nplatform linux -- Python 3.9.17, pytest-7.1.3, pluggy-1.2.0\nrootdir: /sqaaas-build/gitlab.inf.unibz.it/earth_observation_public/raster-to-stac\nplugins: json-report-1.5.0, metadata-3.0.0\ncollected 0 items / 2 errors\n\n==================================== ERRORS ====================================\n__________________ ERROR collecting tests/raster2stac_test.py __________________\nImportError while importing test module '/sqaaas-build/gitlab.inf.unibz.it/earth_observation_public/raster-to-stac/tests/raster2stac_test.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/lib/python3.9/importlib/__init__.py:127: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/raster2stac_test.py:5: in <module>\n    import numpy as np\nE   ModuleNotFoundError: No module named 'numpy'\n________________ ERROR collecting tests/rioxarray_stac_test.py _________________\nImportError while importing test module '/sqaaas-build/gitlab.inf.unibz.it/earth_observation_public/raster-to-stac/tests/rioxarray_stac_test.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/lib/python3.9/importlib/__init__.py:127: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/rioxarray_stac_test.py:1: in <module>\n    import numpy as np\nE   ModuleNotFoundError: No module named 'numpy'\n--------------------------------- JSON report ----------------------------------\nreport saved to: .report.json\n=========================== short test summary info ============================\nERROR tests/raster2stac_test.py\nERROR tests/rioxarray_stac_test.py\n!!!!!!!!!!!!!!!!!!! Interrupted: 2 errors during collection !!!!!!!!!!!!!!!!!!!!\n============================== 2 errors in 0.11s ===============================",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/raster-to-stac.assess.sqaaas/job/main/1/execution/node/115/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/raster-to-stac.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {}
+                        }
+                    ],
+                    "valid": false,
+                    "required_for_next_level_badge": false
+                }
+            },
+            "coverage": {
+                "percentage": 0,
+                "total_subcriteria": 1,
+                "success_subcriteria": 0
+            }
+        },
+        "QC.Ver": {
+            "valid": true,
+            "subcriteria": {
+                "QC.Ver01.0": {
+                    "description": "Are tags being used for releasing software",
+                    "requirement_level": "MUST",
+                    "hint": "Git tags are a convenient way to release software. This subcriterion checks if any git tag is present in the code history. More info on it-scm.com/book/en/v2/Git-Basics-Tagging\" target=\"_blank\">git tagging</a>",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "The code repository uses tags for releasing new software versions",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-is_semver",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "get_git_tags.py",
+                                "lang": "Semantic Versioning",
+                                "version": "latest",
+                                "docker": {
+                                    "dockerfile": "QC.Ver/Dockerfile",
+                                    "reviewed": "2022-05-10"
+                                },
+                                "ci": {
+                                    "name": "QC.Ver gitlab.inf.unibz.it/earth_observation_public/raster-to-stac get_git_tags.py",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "get_git_tags.py"
+                                    ],
+                                    "stdout_text": "['0.0.5', '0.0.4', '0.0.3', '0.0.2', '0.0.1']",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/raster-to-stac.assess.sqaaas/job/main/1/execution/node/124/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/raster-to-stac.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": [
+                                "0.0.5",
+                                "0.0.4",
+                                "0.0.3",
+                                "0.0.2",
+                                "0.0.1"
+                            ]
+                        }
+                    ],
+                    "valid": true
+                },
+                "QC.Ver01": {
+                    "description": "Is the latest release compliant with Semantic Versioning (SemVer) specification?",
+                    "requirement_level": "SHOULD",
+                    "hint": "Latest tag must be compliant with <a href=\"https://semver.org\" target=\"_blank\">SemVer specification</a>",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "Latest release tag 0.0.5 is SemVer compliant",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-is_semver",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "get_git_tags.py",
+                                "lang": "Semantic Versioning",
+                                "version": "latest",
+                                "docker": {
+                                    "dockerfile": "QC.Ver/Dockerfile",
+                                    "reviewed": "2022-05-10"
+                                },
+                                "ci": {
+                                    "name": "QC.Ver gitlab.inf.unibz.it/earth_observation_public/raster-to-stac get_git_tags.py",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "get_git_tags.py"
+                                    ],
+                                    "stdout_text": "['0.0.5', '0.0.4', '0.0.3', '0.0.2', '0.0.1']",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/raster-to-stac.assess.sqaaas/job/main/1/execution/node/124/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/raster-to-stac.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": [
+                                "0.0.5",
+                                "0.0.4",
+                                "0.0.3",
+                                "0.0.2",
+                                "0.0.1"
+                            ]
+                        }
+                    ],
+                    "valid": true
+                },
+                "QC.Ver02": {
+                    "description": "Are all release tags with Semantic Versioning (SemVer) specification?",
+                    "requirement_level": "SHOULD",
+                    "hint": "Existent release tags shall be <a href=\"https://semver.org\" target=\"_blank\">SemVer</a> compliant for this subcriterion to be successful",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "All release tags are SemVer compliant",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-is_semver",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "get_git_tags.py",
+                                "lang": "Semantic Versioning",
+                                "version": "latest",
+                                "docker": {
+                                    "dockerfile": "QC.Ver/Dockerfile",
+                                    "reviewed": "2022-05-10"
+                                },
+                                "ci": {
+                                    "name": "QC.Ver gitlab.inf.unibz.it/earth_observation_public/raster-to-stac get_git_tags.py",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "get_git_tags.py"
+                                    ],
+                                    "stdout_text": "['0.0.5', '0.0.4', '0.0.3', '0.0.2', '0.0.1']",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/raster-to-stac.assess.sqaaas/job/main/1/execution/node/124/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/raster-to-stac.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": [
+                                "0.0.5",
+                                "0.0.4",
+                                "0.0.3",
+                                "0.0.2",
+                                "0.0.1"
+                            ]
+                        }
+                    ],
+                    "valid": true
+                }
+            },
+            "coverage": {
+                "percentage": 100,
+                "total_subcriteria": 3,
+                "success_subcriteria": 3
+            }
+        },
+        "QC.Met": {
+            "valid": false,
+            "subcriteria": {
+                "QC.Met01": {
+                    "description": "Is the software citable?",
+                    "valid": false,
+                    "hint": "The two formats for software citation supported by SQAaaS are: 1) <a href=\"https://codemeta.github.io/\" target=\"_blank\">CodeMeta</a> and 2) <a href=\"https://citation-file-format.github.io/\" target=\"_blank\">Citation File Format (CFF)</a>. While CodeMeta provides you with a more comprehensive description, CFF is a more lightweight, good-enough approach to software (with built-in support by GitHub) citation. Both provide tools (<a href=\"https://codemeta.github.io/codemeta-generator/\" target=\"_blank\">CodeMeta generator</a>, <a href=\"https://citation-file-format.github.io/cff-initializer-javascript/#/\" target=\"_blank\">CFFINIT</a>)to easily generate a working citation file. Once having the file, be sure to add it to the root path of your code repo.",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "No matching files found for language <CodeMeta> in repository searching by extensions or filenames\nNo matching files found for language <Citation File Format> in repository searching by extensions or filenames"
+                        }
+                    ],
+                    "required_for_next_level_badge": false
+                }
+            },
+            "coverage": {
+                "percentage": 0,
+                "total_subcriteria": 1,
+                "success_subcriteria": 0
+            }
+        }
+    },
+    "badge": {
+        "software": {
+            "criteria": {
+                "bronze": {
+                    "to_fulfill": [
+                        "QC.Acc",
+                        "QC.Lic",
+                        "QC.Doc"
+                    ],
+                    "missing": [
+                        "QC.Doc"
+                    ],
+                    "fulfilled": [
+                        "QC.Acc",
+                        "QC.Lic"
+                    ]
+                },
+                "silver": {
+                    "to_fulfill": [
+                        "QC.Lic",
+                        "QC.Doc",
+                        "QC.Acc",
+                        "QC.Ver",
+                        "QC.Met"
+                    ],
+                    "missing": [
+                        "QC.Doc",
+                        "QC.Met"
+                    ],
+                    "fulfilled": [
+                        "QC.Acc",
+                        "QC.Lic",
+                        "QC.Ver"
+                    ]
+                },
+                "gold": {
+                    "to_fulfill": [
+                        "QC.Lic",
+                        "QC.Uni",
+                        "QC.Doc",
+                        "QC.Acc",
+                        "QC.Ver",
+                        "QC.Met",
+                        "QC.Sec",
+                        "QC.Sty"
+                    ],
+                    "missing": [
+                        "QC.Uni",
+                        "QC.Doc",
+                        "QC.Met",
+                        "QC.Sty"
+                    ],
+                    "fulfilled": [
+                        "QC.Sec",
+                        "QC.Acc",
+                        "QC.Lic",
+                        "QC.Ver"
+                    ]
+                }
+            },
+            "data": {}
+        }
+    }
+}
